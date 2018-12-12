@@ -1,0 +1,54 @@
+@media screen and (max-width: 1346px){
+    .statistics_list{
+        padding-left: 25px;
+    }
+    .statistics_list li{
+        padding: 3px 13px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    #vmap{
+        transform: scale(0.9);
+        left:-60px;
+    }
+    .mapBox{
+        height: 380px;
+    }
+}
+@media screen and (max-width: 1199px){
+    .statistics_list li{
+        width:50%;
+        float: left;
+        display: block;
+        line-height: 1.2;
+        margin:2px 0;
+    }
+    .statistics_list li span{
+        font-size: 20px;
+    }
+    .statistics_list li:nth-of-type(2){
+        border-right: none;
+    }
+    #vmap{
+        transform: scale(0.8);
+        left:-80px;
+    }
+    .mapBox{
+        height: 350px;
+    }
+}
+@media screen and (max-width: 992px){
+    .contact_box{
+        text-align: center;
+    }
+    .contact_box a.instuction{
+        float: inherit;
+        top: 0;
+        margin-bottom: 15px;
+    }
+    .contact_box a.feedback{
+        float: inherit;
+        top: 0;
+        margin-top: 15px;
+    }
+}
