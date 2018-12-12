@@ -20,7 +20,7 @@ use app\widgets\WLang;
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
                 </li>
-                <li><a href="http://tt.prokuratura.uz/"><img src="/public/Images/logo.png"></a></li>
+                <li><a href="#"><img src="public/Images/logo.png"></a></li>
                 <li>АИС ПРОВЕРКА СУБЪЕКТОВ<span>ПРЕДПРИНИМАТЕЛЬСТВА</span>
                 </li>
             </ul>

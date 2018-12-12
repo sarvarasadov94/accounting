@@ -29,7 +29,7 @@ class FrontAsset extends AssetBundle
     public $js = [
 //        "_public/js/jquery.js",
         "public/js/dialog.js",
-//        "_public/js/bootstrap.min.js",
+        "public/js/bootstrap.min.js",
 //        "_public/js/bootstrap-dialog.js",
 
 //        "public/js/jquery.vmap.js",
