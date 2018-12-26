@@ -12,13 +12,13 @@ class FrontAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        "public/css/bootstrap.min.css",
+        "/public/css/bootstrap.min.css",
 //        "_public/css/kv-grid.css",
-        "public/css/bootstrap-dialog.css",
+        "/public/css/bootstrap-dialog.css",
 //        "_public/css/jquery.resizableColumns.css",
-        "public/css/font-awesome.css",
-        "public/css/main.css",
-        "public/css/media.css",
+        "/public/css/font-awesome.css",
+        "/public/css/main.css",
+        "/public/css/media.css",
 
 
 //        "_public/css/select2.css",
@@ -28,14 +28,14 @@ class FrontAsset extends AssetBundle
     ];
     public $js = [
 //        "_public/js/jquery.js",
-        "public/js/dialog.js",
-        "public/js/bootstrap.min.js",
+        "/public/js/dialog.js",
+        "/public/js/bootstrap.min.js",
 //        "_public/js/bootstrap-dialog.js",
 
 //        "public/js/jquery.vmap.js",
 //        "public/js/vmap.uzbekistan.js",
 //        "public/js/map.js",
-        "public/js/jquery.mCustomScrollbar.concat.min.js",
+        "/public/js/jquery.mCustomScrollbar.concat.min.js",
 
 //        "_public/js/yii.js",
 //        "_public/js/dialog-yii.js",

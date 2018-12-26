@@ -15,6 +15,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GPfEBRgQ1bT4FNUBa4BIfjB1K-_cZRET',
+            'class' => 'app\components\LangRequest',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,14 +43,32 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'app\components\LangUrlManager',
             'rules' => [
+                '/' => 'site/index',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
+        'language' => 'ru-RU',
+        'sourceLanguage' => 'ru',
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'fileMap' => [
+//                        'main' => 'main.php',
+                    ],
+                ],
+            ],
+        ],
+
+        'db' => $db,
+
+
 
     ],
     'params' => $params,

@@ -9,8 +9,8 @@ use app\widgets\Sidebar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
-
 FrontAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -56,9 +56,10 @@ FrontAsset::register($this);
 
 </div>
 
-<script src="public/js/jquery.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
+<?php
+
+$js = <<<OEF
+$(document).ready(function () {
 
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
@@ -70,7 +71,9 @@ FrontAsset::register($this);
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
-</script>
+OEF;
+$this->registerJs($js);
+?>
 <?php $this->endBody() ?>
 </body>
 </html>
