@@ -9,9 +9,34 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'right-menu',
+            'mainLayout' => '@app/views/layouts/main.php',
+            'controllerMap' => [
+                'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    'idField' => 'id',
+                    'usernameField' => 'username',
+                ],
+            ],
+            'menus' => [
+//                'role' => null,//['label' => 'Menu'],
+//                'permission' => null, // disable menu route
+//                'rule' => null, // disable menu route
+//                'menu' => null,//['label' => 'Menu'],
+//                'route' => null, // disable menu route
+            ]
+        ]
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+            'defaultRoles' => ['guest'],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GPfEBRgQ1bT4FNUBa4BIfjB1K-_cZRET',
@@ -21,8 +46,11 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'mdm\admin\models\User',
+            'loginUrl' => ['site/login'],
             'enableAutoLogin' => true,
+            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'returnUrl' => array('/site/index'),
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -69,7 +97,14 @@ $config = [
         'db' => $db,
 
 
-
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/login',
+            'site/logout',
+            'site/signup',
+        ]
     ],
     'params' => $params,
 ];
