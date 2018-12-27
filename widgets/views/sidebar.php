@@ -13,6 +13,18 @@ use yii\helpers\Html;
         <?= Html::a('<img src="/public/Images/home-2-24.png">' . Yii::t('main', 'Home'), ['site/index'], ['class' => 'active']) ?>
     </li>
     <li>
+        <?= Html::a('<img src="/public/Images/target-audience-24.png">' . Yii::t('main', 'Conscript'), ['doc-conscript/index'], ['class' => 'active']) ?>
+    </li>
+    <li>
+        <?= Html::a('<img src="/public/Images/arrow-32-24.png">' . Yii::t('main', 'MilitaryServiceCard'), ['doc-military-service-card/index'], ['class' => 'active']) ?>
+    </li>
+    <li>
+        <?= Html::a('<img src="/public/Images/buick-24.png">' . Yii::t('main', 'RecordCard'), ['doc-record-card/index'], ['class' => 'active']) ?>
+    </li>
+    <li>
+        <?= Html::a('<img src="/public/Images/star-7-24.png">' . Yii::t('main', 'OfficersAndSoldiers'), ['doc-officers-and-soldiers/index'], ['class' => 'active']) ?>
+    </li>
+    <li>
         <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
             <img src="/public/Images/book-16-24.png"><?= Yii::t('main', 'Entities') ?></a>
         <ul class="collapse out list-unstyled" id="pageSubmenu1">
@@ -103,7 +115,7 @@ use yii\helpers\Html;
         </ul>
     </li>
     <li>
-        <?= Html::a('<img src="/public/Images/translations_icon.png">' . Yii::t('main', 'Lang Translations'), ['lang-translations/index']) ?>
+        <?= Html::a('<img src="/public/Images/1608752-24.png">' . Yii::t('main', 'Lang Translations'), ['lang-translations/index']) ?>
     </li>
 </ul>
 
