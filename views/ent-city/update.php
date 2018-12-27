@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntCity */
 
-$this->title = Yii::t('app', 'Update Ent City: {name}', [
+$this->title = Yii::t('main', 'Update Ent City: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Cities'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Cities'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="ent-city-update">
 

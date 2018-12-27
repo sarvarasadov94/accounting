@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntRegion */
 
-$this->title = Yii::t('app', 'Create Ent Region');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Regions'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create Ent Region');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Regions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-region-create">

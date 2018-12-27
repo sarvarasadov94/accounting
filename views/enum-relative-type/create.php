@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumRelativeType */
 
-$this->title = Yii::t('app', 'Create Enum Relative Type');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Enum Relative Types'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create Enum Relative Type');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Relative Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enum-relative-type-create">

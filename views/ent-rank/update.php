@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntRank */
 
-$this->title = Yii::t('app', 'Update Ent Rank: {name}', [
+$this->title = Yii::t('main', 'Update Ent Rank: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Ranks'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Ranks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="ent-rank-update">
 

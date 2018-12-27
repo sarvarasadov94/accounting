@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntRestrictionDegree */
 
-$this->title = Yii::t('app', 'Update Ent Restriction Degree: {name}', [
+$this->title = Yii::t('main', 'Update Ent Restriction Degree: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Restriction Degrees'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Restriction Degrees'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="ent-restriction-degree-update">
 

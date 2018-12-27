@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntNationality */
 
-$this->title = Yii::t('app', 'Update Ent Nationality: {name}', [
+$this->title = Yii::t('main', 'Update Ent Nationality: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Nationalities'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Nationalities'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="ent-nationality-update">
 

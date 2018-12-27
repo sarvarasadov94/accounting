@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumBloodGroup */
 
-$this->title = Yii::t('app', 'Create Enum Blood Group');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Enum Blood Groups'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create Enum Blood Group');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Blood Groups'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enum-blood-group-create">

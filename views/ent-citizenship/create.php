@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntCitizenship */
 
-$this->title = Yii::t('app', 'Create Ent Citizenship');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ent Citizenships'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create Ent Citizenship');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Citizenships'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-citizenship-create">

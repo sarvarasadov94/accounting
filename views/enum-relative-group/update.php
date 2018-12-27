@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumRelativeGroup */
 
-$this->title = Yii::t('app', 'Update Enum Relative Group: {name}', [
+$this->title = Yii::t('main', 'Update Enum Relative Group: {name}', [
     'name' => $model->name,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Enum Relative Groups'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Relative Groups'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="enum-relative-group-update">
 
