@@ -17,6 +17,9 @@ use yii\helpers\Html;
             <img src="/public/Images/book-16-24.png"><?= Yii::t('main', 'Entities') ?></a>
         <ul class="collapse out list-unstyled" id="pageSubmenu1">
             <li>
+                <?= Html::a(Yii::t('main', 'EntDoctorType'), ['ent-doctor-type/index']) ?>
+            </li>
+            <li>
                 <?= Html::a(Yii::t('main', 'EntCategory'), ['ent-category/index']) ?>
             </li>
             <li>
@@ -69,6 +72,9 @@ use yii\helpers\Html;
             </li>
             <li>
                 <?= Html::a(Yii::t('main', 'EntValidityDegree'), ['ent-validity-degree/index']) ?>
+            </li>
+            <li>
+                <?= Html::a(Yii::t('main', 'EntVoenkomat'), ['ent-voenkomat/index']) ?>
             </li>
         </ul>
     </li>
