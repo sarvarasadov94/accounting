@@ -1459,7 +1459,8 @@ hr {
 
 .h1, .h2, .h3, h1, h2, h3 {
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
+    text-align: center;
     /*margin-left:200px;*/
 }
 
