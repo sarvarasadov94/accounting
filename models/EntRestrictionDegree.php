@@ -42,8 +42,8 @@ class EntRestrictionDegree extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
+            'id' => Yii::t('main', 'id'),
+            'name' => Yii::t('main', 'Name'),
         ];
     }
 

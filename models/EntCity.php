@@ -47,9 +47,9 @@ class EntCity extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'region_id' => 'Region ID',
+            'id' => Yii::t('main', 'id'),
+            'name' => Yii::t('main', 'Name'),
+            'region_id' => Yii::t('main', 'Region ID'),
         ];
     }
 

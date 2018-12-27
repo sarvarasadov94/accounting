@@ -50,20 +50,19 @@ class EntMilitaryUnit extends \yii\db\ActiveRecord
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRegion::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'parent_id' => 'Parent ID',
-            'region_id' => 'Region ID',
-            'city_id' => 'City ID',
-            'district_id' => 'District ID',
-            'code' => 'Code',
+            'id' => Yii::t('main', 'id'),
+            'name' => Yii::t('main', 'Name'),
+            'parent_id' => Yii::t('main', 'parent_id'),
+            'region_id' => Yii::t('main', 'region_id'),
+            'city_id' => Yii::t('main', 'city_id'),
+            'district_id' => Yii::t('main', 'district_id'),
+            'code' => Yii::t('main', 'Code'),
         ];
     }
 

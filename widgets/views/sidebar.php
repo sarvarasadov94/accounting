@@ -97,7 +97,7 @@ use yii\helpers\Html;
         </ul>
     </li>
     <li>
-        <?= Html::a('<img src="/public/Images/translations_icon.png">' . Yii::t('main', 'Language translations'), ['lang-translations/index']) ?>
+        <?= Html::a('<img src="/public/Images/translations_icon.png">' . Yii::t('main', 'Lang Translations'), ['lang-translations/index']) ?>
     </li>
 </ul>
 

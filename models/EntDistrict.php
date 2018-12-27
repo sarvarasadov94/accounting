@@ -51,10 +51,10 @@ class EntDistrict extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'region_id' => 'Region ID',
-            'city_id' => 'City ID',
+            'id' => Yii::t('main', 'id'),
+            'name' => Yii::t('main', 'Name'),
+            'region_id' => Yii::t('main', 'region_id'),
+            'city_id' => Yii::t('main', 'city_id'),
         ];
     }
 
