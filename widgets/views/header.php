@@ -20,8 +20,8 @@ use app\widgets\WLang;
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
                 </li>
-                <li><a href="#"><img src="/public/Images/logo.png"></a></li>
-                <li>АИС ПРОВЕРКА СУБЪЕКТОВ<span>ПРЕДПРИНИМАТЕЛЬСТВА</span>
+                <li><a href="#"><img src="/public/Images/logoo.png" style="width: 50px; height: 50px"></a></li>
+                <li><span>ЭЛЕКТРОННАЯ СИСТЕМА ВОИНСКОГО УЧЕТА</span>
                 </li>
             </ul>
         </div>

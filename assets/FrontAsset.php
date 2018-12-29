@@ -30,6 +30,9 @@ class FrontAsset extends AssetBundle
 //        "_public/js/jquery.js",
         "/public/js/dialog.js",
         "/public/js/bootstrap.min.js",
+        "/public/js/raphael.min.js",
+        "/public/js/morris.min.js",
+        "/public/js/morris-data.js",
 //        "_public/js/bootstrap-dialog.js",
 
 //        "public/js/jquery.vmap.js",

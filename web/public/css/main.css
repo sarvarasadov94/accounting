@@ -174,7 +174,7 @@ a[data-toggle="collapse"] {
     line-height: 1.3;
 }
 .logo_and_title li:nth-of-type(2){
-    padding: 0 20px 0 40px;
+    padding: 0 20px 0 20px;
 }
 .logo_and_title li span{
     display: block;

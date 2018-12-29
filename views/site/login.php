@@ -14,10 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="pos">
         <div class="main_pos">
             <div class="images__link">
-                <img src="/public/Images/authorization_logo.png" alt="">
+                <img src="/public/Images/logoo.png" alt="" style="width: 140px; height: 140px">
                 <div class="no_name_title">
-                    Система учета военнообязанных
-                    <span>УДО</span>
+                    <span>ЭЛЕКТРОННАЯ СИСТЕМА ВОИНСКОГО УЧЕТА</span>
                 </div>
             </div>
             <div class="box">
