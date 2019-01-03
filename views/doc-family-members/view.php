@@ -37,7 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'year_of_birth',
             'address',
             'work_place',
-            'category_id',
             'conscript_id',
             'military_service_card_id',
             'relative_group_id',

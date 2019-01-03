@@ -32,9 +32,6 @@ use yii\helpers\Html;
                 <?= Html::a(Yii::t('main', 'EntDoctorType'), ['ent-doctor-type/index']) ?>
             </li>
             <li>
-                <?= Html::a(Yii::t('main', 'EntCategory'), ['ent-category/index']) ?>
-            </li>
-            <li>
                 <?= Html::a(Yii::t('main', 'EntCitizenship'), ['ent-citizenship/index']) ?>
             </li>
             <li>
@@ -69,9 +66,6 @@ use yii\helpers\Html;
             </li>
             <li>
                 <?= Html::a(Yii::t('main', 'EntRegion'), ['ent-region/index']) ?>
-            </li>
-            <li>
-                <?= Html::a(Yii::t('main', 'EntRelativeGroup'), ['ent-relative-group/index']) ?>
             </li>
             <li>
                 <?= Html::a(Yii::t('main', 'EntReserve'), ['ent-reserve/index']) ?>

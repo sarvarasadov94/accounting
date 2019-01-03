@@ -26,8 +26,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'work_place')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
-
     <?= $form->field($model, 'conscript_id')->textInput() ?>
 
     <?= $form->field($model, 'military_service_card_id')->textInput() ?>

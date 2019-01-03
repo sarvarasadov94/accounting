@@ -15,14 +15,12 @@ use Yii;
  * @property int $year_of_birth
  * @property string $address
  * @property string $work_place
- * @property int $category_id
  * @property int $conscript_id
  * @property int $military_service_card_id
  * @property int $relative_group_id
  *
  * @property DocConscript $conscript
  * @property DocMilitaryServiceCard $militaryServiceCard
- * @property EntCategory $category
  * @property EnumRelativeGroup $relativeGroup
  * @property EnumRelativeType $relativeType
  */
@@ -48,7 +46,6 @@ class DocFamilyMembers extends \yii\db\ActiveRecord
             [['address', 'work_place'], 'string', 'max' => 1000],
             [['conscript_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocConscript::className(), 'targetAttribute' => ['conscript_id' => 'id']],
             [['military_service_card_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocMilitaryServiceCard::className(), 'targetAttribute' => ['military_service_card_id' => 'id']],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['relative_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumRelativeGroup::className(), 'targetAttribute' => ['relative_group_id' => 'id']],
             [['relative_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumRelativeType::className(), 'targetAttribute' => ['relative_type_id' => 'id']],
         ];
@@ -68,7 +65,6 @@ class DocFamilyMembers extends \yii\db\ActiveRecord
             'year_of_birth' => 'Year Of Birth',
             'address' => 'Address',
             'work_place' => 'Work Place',
-            'category_id' => 'Category ID',
             'conscript_id' => 'Conscript ID',
             'military_service_card_id' => 'Military Service Card ID',
             'relative_group_id' => 'Relative Group ID',
@@ -89,14 +85,6 @@ class DocFamilyMembers extends \yii\db\ActiveRecord
     public function getMilitaryServiceCard()
     {
         return $this->hasOne(DocMilitaryServiceCard::className(), ['id' => 'military_service_card_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCategory()
-    {
-        return $this->hasOne(EntCategory::className(), ['id' => 'category_id']);
     }
 
     /**
