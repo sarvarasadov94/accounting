@@ -9,7 +9,9 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property int $rank_type_id
  *
+ * @property EnumRankType $rankType
  * @property DocMilitaryRanks[] $docMilitaryRanks
  * @property DocMilitaryServiceCard[] $docMilitaryServiceCards
  * @property DocRecordCard[] $docRecordCards
@@ -32,6 +34,8 @@ class EntRank extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'string', 'max' => 200],
+            [['rank_type_id'], 'default', 'value' => null],
+            [['rank_type_id'], 'integer'],
         ];
     }
 
@@ -46,6 +50,13 @@ class EntRank extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRankType()
+    {
+        return $this->hasOne(EnumRankType::className(), ['id' => 'rank_type_id']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

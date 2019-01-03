@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntValidityDegree */
 
-$this->title = Yii::t('main', 'Create Ent Validity Degree');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Validity Degrees'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntValidityDegree'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-validity-degree-create">

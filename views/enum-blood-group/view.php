@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\EnumBloodGroup */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Blood Groups'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumBloodGroup'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

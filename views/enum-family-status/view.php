@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\EnumFamilyStatus */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Family Statuses'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumFamilyStatus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

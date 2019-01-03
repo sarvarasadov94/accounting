@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\EntHealthCondition */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Health Conditions'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntHealthCondition'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

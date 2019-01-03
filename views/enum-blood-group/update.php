@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumBloodGroup */
 
-$this->title = Yii::t('main', 'Update Enum Blood Group: {name}', [
-    'name' => $model->name,
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Blood Groups'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Update');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumBloodGroup'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>

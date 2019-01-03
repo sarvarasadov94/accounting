@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\EnumRelativeGroup */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Relative Groups'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumRelativeGroup'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

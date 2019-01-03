@@ -19,6 +19,7 @@ class EntRankSearch extends EntRank
         return [
             [['id'], 'integer'],
             [['name'], 'safe'],
+            [['rank_type_id'], 'integer'],
         ];
     }
 
@@ -59,6 +60,7 @@ class EntRankSearch extends EntRank
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'rank_type_id' => $this->rank_type_id,
         ]);
 
         $query->andFilterWhere(['ilike', 'name', $this->name]);

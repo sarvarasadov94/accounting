@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EntCitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('main', 'Ent Cities');
+$this->title = Yii::t('main', 'EntCity');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-city-index">
@@ -23,13 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
             'name',
             'region_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>
 </div>

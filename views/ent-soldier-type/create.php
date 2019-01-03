@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntSoldierType */
 
-$this->title = Yii::t('app', 'Create Ent Soldier Type');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Soldier Types'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntSoldierType'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-soldier-type-create">

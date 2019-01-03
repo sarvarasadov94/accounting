@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumBloodGroup */
 
-$this->title = Yii::t('main', 'Create Enum Blood Group');
+$this->title = Yii::t('main', 'Create');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Blood Groups'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

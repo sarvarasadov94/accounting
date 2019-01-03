@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntSocialPosition */
 
-$this->title = Yii::t('main', 'Create Ent Social Position');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Social Positions'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntSocialPosition'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-social-position-create">

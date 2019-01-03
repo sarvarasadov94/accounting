@@ -104,6 +104,9 @@ use yii\helpers\Html;
                 <?= Html::a(Yii::t('main', 'EnumRelativeType'), ['enum-relative-type/index']) ?>
             </li>
             <li>
+                <?= Html::a(Yii::t('main', 'EnumRankType'), ['enum-rank-type/index']) ?>
+            </li>
+            <li>
                 <?= Html::a(Yii::t('main', 'EnumRhFactor'), ['enum-rh-factor/index']) ?>
             </li>
         </ul>

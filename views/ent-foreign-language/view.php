@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\EntForeignLanguage */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Foreign Languages'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntForeignLanguage'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

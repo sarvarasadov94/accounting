@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumRelativeGroup */
 
-$this->title = Yii::t('main', 'Create Enum Relative Group');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Relative Groups'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumRelativeGroup'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enum-relative-group-create">

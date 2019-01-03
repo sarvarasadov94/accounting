@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
             'receipt_of_basic_military',
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'modifier',
             //'modified_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>
 </div>

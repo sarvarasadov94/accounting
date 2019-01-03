@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntForeignLanguage */
 
-$this->title = Yii::t('main', 'Create Ent Foreign Language');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Foreign Languages'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntForeignLanguage'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-foreign-language-create">

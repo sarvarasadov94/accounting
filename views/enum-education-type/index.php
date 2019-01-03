@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EnumEducationTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('main', 'Enum Education Types');
+$this->title = Yii::t('main', 'EnumEducationType');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enum-education-type-index">
@@ -23,12 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>
 </div>

@@ -17,6 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'rank_type_id') ?>
+
     <?= $form->field($model, 'name') ?>
 
     <div class="form-group">

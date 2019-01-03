@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EntEducationalInstitutionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('main', 'Ent Educational Institutions');
+$this->title = Yii::t('main', 'EntEducationalInstitution');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-educational-institution-index">
@@ -23,12 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>
 </div>

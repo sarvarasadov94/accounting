@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumRelativeType */
 
-$this->title = Yii::t('main', 'Update Enum Relative Type: {name}', [
-    'name' => $model->name,
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Relative Types'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Update');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumRelativeType'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>

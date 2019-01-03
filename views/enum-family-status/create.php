@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EnumFamilyStatus */
 
-$this->title = Yii::t('main', 'Create Enum Family Status');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Enum Family Statuses'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EnumFamilyStatus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="enum-family-status-create">

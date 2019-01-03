@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EntRestrictionDegree */
 
-$this->title = Yii::t('main', 'Create Ent Restriction Degree');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Ent Restriction Degrees'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'EntRestrictionDegree'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-restriction-degree-create">
