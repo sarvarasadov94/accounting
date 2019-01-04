@@ -80,7 +80,7 @@ use yii\helpers\Html;
                 <?= Html::a(Yii::t('main', 'EntValidityDegree'), ['ent-validity-degree/index']) ?>
             </li>
             <li>
-                <?= Html::a(Yii::t('main', 'EntVoenkomat'), ['ent-voenkomat/index']) ?>
+                <?= Html::a(Yii::t('main', 'EntUdo'), ['ent-udo/index']) ?>
             </li>
         </ul>
     </li>

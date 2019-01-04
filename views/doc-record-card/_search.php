@@ -63,9 +63,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'family_residence') ?>
 
-    <?php // echo $form->field($model, 'voenkomat_id') ?>
+    <?php // echo $form->field($model, 'odo_id') ?>
 
-    <?php // echo $form->field($model, 'voenkomat_region_id') ?>
+    <?php // echo $form->field($model, 'udo_id') ?>
 
     <?php // echo $form->field($model, 'military_unit_id') ?>
 

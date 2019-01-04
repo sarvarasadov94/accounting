@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'date_create')->textInput() ?>
 
     <div class="form-group pull-right">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

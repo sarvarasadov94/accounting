@@ -17,7 +17,7 @@ class DocMilitaryServiceCardSearch extends DocMilitaryServiceCard
     public function rules()
     {
         return [
-            [['id', 'nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo', 'conscript_id', 'creator', 'modifier'], 'integer'],
+            [['id', 'nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo','udo_id', 'conscript_id', 'creator', 'modifier'], 'integer'],
             [['first_name', 'last_name', 'patronymic', 'personal_number', 'birth_date', 'birth_place', 'military_special', 'foreign_lang_id', 'participation_in_battles', 'photo_name', 'photo_path', 'drafted_to_armed_forces', 'continuation_of_service', 'med_comission_result', 'category', 'intended', 'work_place', 'address', 'ld_number', 'is_registered_date', 'created_at', 'modified_at'], 'safe'],
         ];
     }
@@ -69,6 +69,7 @@ class DocMilitaryServiceCardSearch extends DocMilitaryServiceCard
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
             'is_registered_odo' => $this->is_registered_odo,
+            'udo_id' => $this->udo_id,
             'is_registered_date' => $this->is_registered_date,
             'conscript_id' => $this->conscript_id,
             'creator' => $this->creator,

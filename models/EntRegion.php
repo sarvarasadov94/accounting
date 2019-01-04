@@ -94,14 +94,6 @@ class EntRegion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDocRecordCards0()
-    {
-        return $this->hasMany(DocRecordCard::className(), ['voenkomat_region_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getEntCities()
     {
         return $this->hasMany(EntCity::className(), ['region_id' => 'id']);

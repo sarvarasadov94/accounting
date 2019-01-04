@@ -17,7 +17,7 @@ class EntOdoSearch extends EntOdo
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id','udo_id', 'district_id', 'city_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -59,6 +59,9 @@ class EntOdoSearch extends EntOdo
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'udo_id' => $this->udo_id,
+            'district_id' => $this->district_id,
+            'city_id' => $this->city_id
         ]);
 
         $query->andFilterWhere(['ilike', 'name', $this->name]);

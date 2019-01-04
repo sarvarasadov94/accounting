@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'lang_uz')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group  pull-right">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

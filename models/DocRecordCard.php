@@ -80,7 +80,7 @@ use Yii;
  * @property EntRegion $region
  * @property EntRegion $voenkomatRegion
  * @property EntValidityDegree $validityDegree
- * @property EntVoenkomat $voenkomat
+ * @property EntUdo $udo
  * @property EnumEducationType $educationType
  * @property EnumFamilyStatus $familyStatus
  */
@@ -101,8 +101,8 @@ class DocRecordCard extends \yii\db\ActiveRecord
     {
         return [
             [['birth_date', 'vocation_date', 'based_date', 'military_oath_taken_date'], 'safe'],
-            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'voenkomat_id', 'voenkomat_region_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'default', 'value' => null],
-            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'voenkomat_id', 'voenkomat_region_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'integer'],
+            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'default', 'value' => null],
+            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'integer'],
             [['pinfl'], 'string', 'max' => 100],
             [['passport_seria'], 'string', 'max' => 2],
             [['passport_number'], 'string', 'max' => 10],
@@ -115,9 +115,9 @@ class DocRecordCard extends \yii\db\ActiveRecord
             [['rank_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRank::className(), 'targetAttribute' => ['rank_id' => 'id']],
             [['statewide_rank_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRank::className(), 'targetAttribute' => ['statewide_rank_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRegion::className(), 'targetAttribute' => ['region_id' => 'id']],
-            [['voenkomat_region_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRegion::className(), 'targetAttribute' => ['voenkomat_region_id' => 'id']],
+            [['udo_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntUdo::className(), 'targetAttribute' => ['udo_id' => 'id']],
             [['validity_degree_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntValidityDegree::className(), 'targetAttribute' => ['validity_degree_id' => 'id']],
-            [['voenkomat_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntVoenkomat::className(), 'targetAttribute' => ['voenkomat_id' => 'id']],
+            [['odo_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntOdo::className(), 'targetAttribute' => ['odo_id' => 'id']],
             [['education_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumEducationType::className(), 'targetAttribute' => ['education_type_id' => 'id']],
             [['family_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumFamilyStatus::className(), 'targetAttribute' => ['family_status_id' => 'id']],
         ];
@@ -153,8 +153,8 @@ class DocRecordCard extends \yii\db\ActiveRecord
             'district_id' => 'District ID',
             'family_status_id' => 'Family Status ID',
             'family_residence' => 'Family Residence',
-            'voenkomat_id' => 'Voenkomat ID',
-            'voenkomat_region_id' => 'Voenkomat Region ID',
+            'odo_id' => 'Odo ID',
+            'udo_id' => 'UdoID',
             'military_unit_id' => 'Military Unit ID',
             'vocation_date' => 'Vocation Date',
             'certificate_seria' => 'Certificate Seria',
@@ -282,9 +282,9 @@ class DocRecordCard extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVoenkomatRegion()
+    public function getUdo()
     {
-        return $this->hasOne(EntRegion::className(), ['id' => 'voenkomat_region_id']);
+        return $this->hasOne(EntUdo::className(), ['id' => 'udo_id']);
     }
 
     /**
@@ -298,9 +298,9 @@ class DocRecordCard extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVoenkomat()
+    public function getOdo()
     {
-        return $this->hasOne(EntVoenkomat::className(), ['id' => 'voenkomat_id']);
+        return $this->hasOne(EntOdo::className(), ['id' => 'odo_id']);
     }
 
     /**

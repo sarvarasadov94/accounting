@@ -35,6 +35,7 @@ use Yii;
  * @property int $city_id
  * @property int $district_id
  * @property int $is_registered_odo
+ * @property int $udo_id
  * @property string $ld_number
  * @property string $is_registered_date
  * @property int $conscript_id
@@ -72,8 +73,8 @@ class DocMilitaryServiceCard extends \yii\db\ActiveRecord
     {
         return [
             [['birth_date', 'is_registered_date'], 'safe'],
-            [['nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo', 'conscript_id'], 'default', 'value' => null],
-            [['nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo', 'conscript_id'], 'integer'],
+            [['nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo', 'udo_id', 'conscript_id'], 'default', 'value' => null],
+            [['nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo', 'udo_id', 'conscript_id'], 'integer'],
             [['conscript_id'], 'required'],
             [['first_name', 'last_name', 'patronymic', 'personal_number'], 'string', 'max' => 200],
             [['birth_place', 'military_special', 'foreign_lang_id', 'participation_in_battles', 'photo_name', 'photo_path', 'drafted_to_armed_forces', 'continuation_of_service', 'med_comission_result', 'category', 'intended', 'work_place', 'address', 'ld_number'], 'string', 'max' => 1000],
@@ -86,6 +87,8 @@ class DocMilitaryServiceCard extends \yii\db\ActiveRecord
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntRegion::className(), 'targetAttribute' => ['region_id' => 'id']],
             [['reserve_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntReserve::className(), 'targetAttribute' => ['reserve_id' => 'id']],
             [['family_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumFamilyStatus::className(), 'targetAttribute' => ['family_status_id' => 'id']],
+            [['is_registered_odo'], 'exist', 'skipOnError' => true, 'targetClass' => EntOdo::className(), 'targetAttribute' => ['is_registered_odo' => 'id']],
+            [['udo_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntUdo::className(), 'targetAttribute' => ['udo_id' => 'id']],
         ];
     }
 
@@ -123,6 +126,7 @@ class DocMilitaryServiceCard extends \yii\db\ActiveRecord
             'city_id' => 'City ID',
             'district_id' => 'District ID',
             'is_registered_odo' => 'Is Registered Odo',
+            'udo_id' => 'Udo ID',
             'ld_number' => 'Ld Number',
             'is_registered_date' => 'Is Registered Date',
             'conscript_id' => 'Conscript ID',
@@ -231,6 +235,22 @@ class DocMilitaryServiceCard extends \yii\db\ActiveRecord
     public function getFamilyStatus()
     {
         return $this->hasOne(EnumFamilyStatus::className(), ['id' => 'family_status_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIsRegisteredOdo()
+    {
+        return $this->hasOne(EntOdo::className(), ['id' => 'is_registered_odo']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUdo()
+    {
+        return $this->hasOne(EntUdo::className(), ['id' => 'udo_id']);
     }
 
     /**

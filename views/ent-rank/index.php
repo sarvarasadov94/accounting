@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EntRankSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-
+            [
+                'attribute' => 'rank_type_id',
+                'value' => function ($model) {
+                    return $model->rankType ? $model->rankType->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EnumRankType::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
             ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>

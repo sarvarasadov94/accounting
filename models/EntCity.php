@@ -49,7 +49,7 @@ class EntCity extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('main', 'id'),
             'name' => Yii::t('main', 'Name'),
-            'region_id' => Yii::t('main', 'Region ID'),
+            'region_id' => Yii::t('main', 'region_id'),
         ];
     }
 

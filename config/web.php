@@ -104,6 +104,7 @@ $config = [
             'site/login',
             'site/logout',
             'site/signup',
+            'gii/*'
         ]
     ],
     'params' => $params,

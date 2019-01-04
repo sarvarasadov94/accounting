@@ -17,7 +17,7 @@ class DocRecordCardSearch extends DocRecordCard
     public function rules()
     {
         return [
-            [['id', 'nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'voenkomat_id', 'voenkomat_region_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id', 'creator', 'modifier'], 'integer'],
+            [['id', 'nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id', 'creator', 'modifier'], 'integer'],
             [['pinfl', 'passport_seria', 'passport_number', 'photo_name', 'photo_path', 'first_name', 'last_name', 'patronymic', 'birth_date', 'birth_place', 'vus_number', 'vus_code', 'civilian_profession', 'work_place', 'phone_number', 'address', 'family_residence', 'vocation_date', 'certificate_seria', 'certificate_number', 'category', 'accounting_group', 'composition', 'rank_name_and_vus', 'team_number', 'by_vus', 'position', 'route_number', 'days_and_hours', 'point', 'prescription_issued', 'access_number', 'based_date', 'based_comment', 'secondment_conclusion', 'head_of_dep_conclusion', 'height', 'head_circumference', 'uniform_size', 'shoe_size', 'participation_in_battles', 'military_oath_taken_date', 'military_oath_taken_comment', 'awards', 'wounds', 'special_marks', 'created_at', 'modified_at'], 'safe'],
         ];
     }
@@ -66,8 +66,8 @@ class DocRecordCardSearch extends DocRecordCard
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
             'family_status_id' => $this->family_status_id,
-            'voenkomat_id' => $this->voenkomat_id,
-            'voenkomat_region_id' => $this->voenkomat_region_id,
+            'odo_id' => $this->odo_id,
+            'udo_id' => $this->udo_id,
             'military_unit_id' => $this->military_unit_id,
             'vocation_date' => $this->vocation_date,
             'validity_degree_id' => $this->validity_degree_id,

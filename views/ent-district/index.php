@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EntDistrictSearch */
@@ -27,8 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-            'region_id',
-            'city_id',
+            [
+                'attribute' => 'region_id',
+                'value' => function ($model) {
+                    return $model->region ? $model->region->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntRegion::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return $model->city ? $model->city->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntCity::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],

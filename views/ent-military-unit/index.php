@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EntMilitaryUnitSearch */
@@ -28,10 +29,34 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'name',
             'code',
-            'parent_id',
-            'region_id',
-            'city_id',
-            'district_id',
+            [
+                'attribute' => 'parent_id',
+                'value' => function ($model) {
+                    return $model->parent ? $model->parent->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntMilitaryUnit::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'region_id',
+                'value' => function ($model) {
+                    return $model->region ? $model->region->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntRegion::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return $model->city ? $model->city->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntCity::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'district_id',
+                'value' => function ($model) {
+                    return $model->district ? $model->district->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntDistrict::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],

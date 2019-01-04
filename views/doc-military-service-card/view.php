@@ -56,6 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'region_id',
             'city_id',
             'district_id',
+            'udo_id',
             'is_registered_odo',
             'ld_number',
             'is_registered_date',

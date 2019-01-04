@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EntOdoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +27,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-
+            [
+                'attribute' => 'udo_id',
+                'value' => function ($model) {
+                    return $model->udo ? $model->udo->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntUdo::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return $model->city ? $model->city->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntCity::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'district_id',
+                'value' => function ($model) {
+                    return $model->district ? $model->district->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntDistrict::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
             ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],
         ],
     ]); ?>

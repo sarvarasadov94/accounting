@@ -58,9 +58,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'family_residence')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'voenkomat_id')->textInput() ?>
+    <?= $form->field($model, 'odo_id')->textInput() ?>
 
-    <?= $form->field($model, 'voenkomat_region_id')->textInput() ?>
+    <?= $form->field($model, 'udo_id')->textInput() ?>
 
     <?= $form->field($model, 'military_unit_id')->textInput() ?>
 
@@ -129,7 +129,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'special_marks')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -64,6 +64,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'district_id')->textInput() ?>
 
+    <?= $form->field($model, 'udo_id')->textInput() ?>
+
     <?= $form->field($model, 'is_registered_odo')->textInput() ?>
 
     <?= $form->field($model, 'ld_number')->textInput(['maxlength' => true]) ?>
@@ -73,7 +75,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'conscript_id')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

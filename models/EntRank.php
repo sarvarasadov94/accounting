@@ -47,6 +47,7 @@ class EntRank extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('main', 'id'),
             'name' => Yii::t('main', 'Name'),
+            'rank_type_id' => Yii::t('main', 'rank_type_id'),
         ];
     }
 
