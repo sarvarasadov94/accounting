@@ -48,7 +48,7 @@ FrontAsset::register($this);
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="footer_right_box">Служба технической поддержки: <span>+998 71 200 00 00</span></div>
+                <div class="footer_right_box" >Служба технической поддержки: <span>+998 71 --- -- --</span></div>
             </div>
             <div class="clearfix"></div>
         </div>

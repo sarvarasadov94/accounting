@@ -62,15 +62,20 @@ class DocPreparationForArmedForcesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($conscriptId = null)
     {
         $model = new DocPreparationForArmedForces();
 
+        if ($conscriptId) {
+            $model->conscript_id = $conscriptId;
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 5]);
         }
 
         return $this->render('create', [
+            'conscriptId' => $conscriptId,
             'model' => $model,
         ]);
     }
@@ -82,15 +87,16 @@ class DocPreparationForArmedForcesController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $conscriptId = null)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 5]);
         }
 
         return $this->render('update', [
+            'conscriptId' => $conscriptId,
             'model' => $model,
         ]);
     }

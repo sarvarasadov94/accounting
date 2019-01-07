@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-2 center_block">
                 <div><img src="/public/Images/phone_icon.png"></div>
                 Служба технической поддержки:
-                <span>+998 71 200 00 00</span>
+                <span>+998 71 --- -- --</span>
             </div>
             <div class="col-md-5"><a href="#" class="feedback">Обратная связь</a></div>
             <div class="clearfix"></div>

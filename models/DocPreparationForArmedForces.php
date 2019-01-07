@@ -44,7 +44,6 @@ class DocPreparationForArmedForces extends \yii\db\ActiveRecord
             [['study_date', 'startdate', 'enddate'], 'safe'],
             [['conscript_id', 'bloodgroup_id', 'rhfactor_id'], 'default', 'value' => null],
             [['conscript_id', 'bloodgroup_id', 'rhfactor_id'], 'integer'],
-            [['rhfactor_id'], 'required'],
             [['receipt_of_basic_military', 'professional_fitness_conclusion', 'educational_establishment', 'specialty_received', 'study_period'], 'string', 'max' => 45],
             [['conscript_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocConscript::className(), 'targetAttribute' => ['conscript_id' => 'id']],
             [['bloodgroup_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnumBloodGroup::className(), 'targetAttribute' => ['bloodgroup_id' => 'id']],

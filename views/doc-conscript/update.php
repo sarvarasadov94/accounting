@@ -14,8 +14,6 @@ $this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>
 <div class="doc-conscript-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

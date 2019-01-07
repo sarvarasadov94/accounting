@@ -40,8 +40,8 @@ class DocFamilyMembers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['relative_type_id', 'year_of_birth', 'category_id', 'conscript_id', 'military_service_card_id', 'relative_group_id'], 'default', 'value' => null],
-            [['relative_type_id', 'year_of_birth', 'category_id', 'conscript_id', 'military_service_card_id', 'relative_group_id'], 'integer'],
+            [['relative_type_id', 'year_of_birth', 'conscript_id', 'military_service_card_id', 'relative_group_id'], 'default', 'value' => null],
+            [['relative_type_id', 'year_of_birth', 'conscript_id', 'military_service_card_id', 'relative_group_id'], 'integer'],
             [['first_name', 'last_name', 'patronymic'], 'string', 'max' => 200],
             [['address', 'work_place'], 'string', 'max' => 1000],
             [['conscript_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocConscript::className(), 'targetAttribute' => ['conscript_id' => 'id']],

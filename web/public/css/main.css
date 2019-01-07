@@ -485,7 +485,7 @@ a[data-toggle="collapse"] {
     z-index: 10;
     display: flex;
     align-items: center;
-    min-height: 52px;
+    min-height: 38px;
     background-color: #003e6d;
     padding: 0px 80px 0px 60px;
     color: #fff;
@@ -493,6 +493,7 @@ a[data-toggle="collapse"] {
 .footer_left_box a{
     margin-left: 20px;
     text-decoration: underline;
+    font-size: 12px;
 }
 .footer_left_box a:hover{
     text-decoration: none;
@@ -500,13 +501,14 @@ a[data-toggle="collapse"] {
 .footer_right_box{
     position: relative;
     float: right;
-    font-size: 16px;
+    font-size: 12px;
 }
 .footer_right_box:before{
     content: '';
     background: url("../Images/phone_icon.png") no-repeat;
-    width: 42px;
-    height: 42px;
+    background-size:contain;
+    width: 28px;
+    height: 28px;
     position: absolute;
     top:50%;
     left:0;
@@ -515,11 +517,11 @@ a[data-toggle="collapse"] {
     -moz-transform: translate(0, -50%);
     -o-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
-    margin: 0 0 0 -60px;
+    margin: 0 0 0 -40px;
 }
 .footer_right_box span{
     display: block;
-    font-size: 18px;
+    font-size: 12px;
 }
 /****************authorization******************/
 .authorizatio_box{

@@ -17,7 +17,7 @@ class DocFamilyMembersSearch extends DocFamilyMembers
     public function rules()
     {
         return [
-            [['id', 'relative_type_id', 'year_of_birth', 'category_id', 'conscript_id', 'military_service_card_id', 'relative_group_id', 'creator', 'modifier'], 'integer'],
+            [['id', 'relative_type_id', 'year_of_birth', 'conscript_id', 'military_service_card_id', 'relative_group_id', 'creator', 'modifier'], 'integer'],
             [['first_name', 'last_name', 'patronymic', 'address', 'work_place', 'created_at', 'modified_at'], 'safe'],
         ];
     }
@@ -61,7 +61,6 @@ class DocFamilyMembersSearch extends DocFamilyMembers
             'id' => $this->id,
             'relative_type_id' => $this->relative_type_id,
             'year_of_birth' => $this->year_of_birth,
-            'category_id' => $this->category_id,
             'conscript_id' => $this->conscript_id,
             'military_service_card_id' => $this->military_service_card_id,
             'relative_group_id' => $this->relative_group_id,

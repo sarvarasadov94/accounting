@@ -2,6 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\DocEducation;
+use app\models\DocFamilyMembers;
+use app\models\DocPreparationForArmedForces;
+use app\models\DocTurnoutToBeSentToMilitaryUnit;
 use Yii;
 use app\models\DocConscript;
 use app\models\DocConscriptSearch;
@@ -50,10 +54,25 @@ class DocConscriptController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($id,$tab = 1)
     {
+//        $conscript = DocConscript::find()->with([
+//            'docEducations',
+//            'docFamilyMembers'
+//        ])->one();
+
+        $education = DocEducation::find()->where(['conscript_id' => $id])->with(['educationalInstitution', 'educationType'])->asArray()->all();
+        $familyMembers = DocFamilyMembers::find()->where(['conscript_id' => $id])->with(['relativeGroup', 'relativeType'])->asArray()->all();
+        $preparation = DocPreparationForArmedForces::find()->where(['conscript_id' => $id])->with(['bloodgroup', 'rhfactor'])->asArray()->all();
+        $turnout = DocTurnoutToBeSentToMilitaryUnit::find()->where(['conscript_id' => $id])->with(['militaryUnit'])->asArray()->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'education' => $education,
+            'familyMembers' => $familyMembers,
+            'preparation' => $preparation,
+            'turnout' => $turnout,
+            'tab' => $tab,
         ]);
     }
 
@@ -67,7 +86,8 @@ class DocConscriptController extends Controller
         $model = new DocConscript();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +107,8 @@ class DocConscriptController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['index']);
         }
 
         return $this->render('update', [
