@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\DocMilitaryServiceCard;
@@ -17,8 +18,8 @@ class DocMilitaryServiceCardSearch extends DocMilitaryServiceCard
     public function rules()
     {
         return [
-            [['id', 'nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'is_registered_odo','udo_id', 'conscript_id', 'creator', 'modifier'], 'integer'],
-            [['first_name', 'last_name', 'patronymic', 'personal_number', 'birth_date', 'birth_place', 'military_special', 'foreign_lang_id', 'participation_in_battles', 'photo_name', 'photo_path', 'drafted_to_armed_forces', 'continuation_of_service', 'med_comission_result', 'category', 'intended', 'work_place', 'address', 'ld_number', 'is_registered_date', 'created_at', 'modified_at'], 'safe'],
+            [['id', 'nationality_id', 'citizenship_id', 'family_status_id', 'rank_id', 'reserve_id', 'region_id', 'city_id', 'district_id', 'udo_id', 'conscript_id', 'creator', 'modifier'], 'integer'],
+            [['first_name', 'last_name', 'patronymic', 'personal_number', 'birth_date', 'oath_date', 'birth_place', 'military_special', 'foreign_lang_id', 'participation_in_battles', 'photo_name', 'photo_path', 'drafted_to_armed_forces', 'continuation_of_service', 'med_comission_result', 'category', 'intended', 'work_place', 'address', 'ld_number', 'is_registered_date', 'created_at', 'modified_at'], 'safe'],
         ];
     }
 
@@ -44,9 +45,24 @@ class DocMilitaryServiceCardSearch extends DocMilitaryServiceCard
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        if (Yii::$app->user->can('Superadmin') || Yii::$app->user->can('Admin')) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0']),
+            ]);
+        } else if (isset(User::findOne(Yii::$app->user->getId())->udo_id) && isset(User::findOne(Yii::$app->user->getId())->odo_id)) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0'])->andWhere(['udo_id' => User::findOne(Yii::$app->user->getId())->udo_id])->andWhere(['odo_id' => User::findOne(Yii::$app->user->getId())->odo_id]),
+            ]);
+        } else if (isset(User::findOne(Yii::$app->user->getId())->udo_id) && !isset(User::findOne(Yii::$app->user->getId())->odo_id)) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0'])->andWhere(['udo_id' => User::findOne(Yii::$app->user->getId())->udo_id]),
+            ]);
+        } else {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => '0'])->andWhere(['deletion_mark' => null]),
+            ]);
+        }
+
 
         $this->load($params);
 
@@ -68,7 +84,6 @@ class DocMilitaryServiceCardSearch extends DocMilitaryServiceCard
             'region_id' => $this->region_id,
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
-            'is_registered_odo' => $this->is_registered_odo,
             'udo_id' => $this->udo_id,
             'is_registered_date' => $this->is_registered_date,
             'conscript_id' => $this->conscript_id,

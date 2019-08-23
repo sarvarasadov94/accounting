@@ -59,16 +59,16 @@ class DocAcceptanceAndWithdrawalMarks extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'accepted_date' => 'Accepted Date',
-            'arrived' => 'Arrived',
-            'arrived_district_id' => 'Arrived District ID',
-            'arrived_region_id' => 'Arrived Region ID',
-            'filmed_date' => 'Filmed Date',
-            'departed' => 'Departed',
-            'departed_district_id' => 'Departed District ID',
-            'departed_region_id' => 'Departed Region ID',
-            'record_card_id' => 'Record Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'accepted_date' => Yii::t('main', 'Accepted Date'),
+            'arrived' => Yii::t('main', 'Arrived'),
+            'arrived_district_id' => Yii::t('main', 'Arrived District ID'),
+            'arrived_region_id' => Yii::t('main', 'Arrived Region ID'),
+            'filmed_date' => Yii::t('main', 'Filmed Date'),
+            'departed' => Yii::t('main', 'Departed'),
+            'departed_district_id' => Yii::t('main', 'Departed District ID'),
+            'departed_region_id' => Yii::t('main', 'Departed Region ID'),
+            'record_card_id' => Yii::t('main', 'Record Card ID'),
         ];
     }
 

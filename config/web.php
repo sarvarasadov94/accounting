@@ -12,6 +12,7 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'modules' => [
+        'gridview' => ['class' => 'kartik\grid\Module'],
         'admin' => [
             'class' => 'mdm\admin\Module',
             'layout' => 'right-menu',
@@ -104,7 +105,7 @@ $config = [
             'site/login',
             'site/logout',
             'site/signup',
-            'gii/*'
+            'site/odo',
         ]
     ],
     'params' => $params,

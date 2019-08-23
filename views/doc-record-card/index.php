@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\DocRecordCardSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('main', 'Doc Record Cards');
+$this->title = Yii::t('main', 'RecordCard');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="doc-record-card-index">
@@ -26,14 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
-            'pinfl',
+            'last_name',
+            'first_name',
+            'patronymic',
             'passport_seria',
             'passport_number',
-            'photo_name',
             //'photo_path',
-            //'first_name',
-            //'last_name',
-            //'patronymic',
             //'birth_date',
             //'birth_place',
             //'vus_number',
@@ -44,9 +42,27 @@ $this->params['breadcrumbs'][] = $this->title;
             //'work_place',
             //'phone_number',
             //'address',
-            //'region_id',
-            //'city_id',
-            //'district_id',
+            [
+                'attribute' => 'region_id',
+                'value' => function ($model) {
+                    return $model->region ? $model->region->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntRegion::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return $model->city ? $model->city->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntCity::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'district_id',
+                'value' => function ($model) {
+                    return $model->district ? $model->district->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntDistrict::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
             //'family_status_id',
             //'family_residence',
             //'odo_id',

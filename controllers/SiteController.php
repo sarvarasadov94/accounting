@@ -2,14 +2,20 @@
 
 namespace app\controllers;
 
+use app\models\DocConscript;
+use app\models\EntOdo;
+use mdm\admin\models\User;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use mdm\admin\models\form\Signup;
+use yii\web\UploadedFile;
+use mdm\admin\models\form\ChangePassword;
 
 class SiteController extends Controller
 {
@@ -61,16 +67,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
-    /**
      * Login action.
      *
      * @return Response|string
@@ -94,6 +90,21 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionIndex()
+    {
+        $date = date('Y-m-d', strtotime(date("Y-m-d") . ' - 27 year'));
+        $list = DocConscript::find()->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0'])->andWhere(['not', ['region_id' => null]])->andWhere(['<=', 'birth_date', $date])->all();
+
+        return $this->render('index', [
+            'list' => $list,
+        ]);
+    }
+
     public function actionSignup()
     {
         $this->layout = 'login';
@@ -108,6 +119,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
     /**
      * Logout action.
      *
@@ -137,6 +149,38 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionProfile($id)
+    {
+        $model = User::findOne($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->photo = UploadedFile::getInstance($model, 'photo');
+            if (!is_null($model->photo)) {
+                $pathForFolder = 'uploads/profile/' . Yii::$app->user->identity->getId() . DIRECTORY_SEPARATOR;
+                FileHelper::createDirectory($pathForFolder, $mode = 0775, $recursive = true);
+                $model->photo_name = $model->photo->baseName . '.' . $model->photo->extension;
+                $model->photo_path = $pathForFolder . $model->photo_name;
+//                if (file_exists($model->photo_path)) {
+//                    unlink($model->photo_path);
+//                }
+                $model->photo->saveAs($model->photo_path);
+            }
+            $model->first_name = $_POST['User']['first_name'];
+            $model->second_name = $_POST['User']['second_name'];
+            $model->patronymic = $_POST['User']['patronymic'];
+            $model->email = $_POST['User']['email'];
+            $model->position = $_POST['User']['position'];
+            $model->udo_id = $_POST['User']['udo_id'];
+            $model->odo_id = $_POST['User']['odo_id'] ? $_POST['User']['odo_id'] : null;
+            $model->save(false);
+            return $this->redirect(['site/index']);
+        } else {
+            return $this->render('profile', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Displays about page.
      *
@@ -145,5 +189,31 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionOdo($id)
+    {
+        $types = EntOdo::find()->where(['udo_id' => $id])->all();
+
+        if (!empty($types)) {
+            echo "<option>" . Yii::t('main', 'Choose') . "</option>";
+            foreach ($types as $type) {
+                echo "<option value='" . $type->id . "'>" . $type->name . "</option>";
+            }
+        } else {
+            echo "<option>" . Yii::t('main', 'Choose') . "</option>";
+        }
+    }
+
+    public function actionChangePassword()
+    {
+        $model = new ChangePassword();
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->change()) {
+            return $this->goHome();
+        }
+
+        return $this->render('change-password', [
+            'model' => $model,
+        ]);
     }
 }

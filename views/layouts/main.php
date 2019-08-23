@@ -47,10 +47,10 @@ FrontAsset::register($this);
 <!--                    <a href="#">Обратная связь</a>-->
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="footer_right_box" >Служба технической поддержки: <span>+998 71 --- -- --</span></div>
-            </div>
-            <div class="clearfix"></div>
+<!--            <div class="col-md-6">-->
+<!--                <div class="footer_right_box" >Служба технической поддержки: <span>+998 71 --- -- --</span></div>-->
+<!--            </div>-->
+<!--            <div class="clearfix"></div>-->
         </div>
     </div>
 

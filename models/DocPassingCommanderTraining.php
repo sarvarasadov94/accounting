@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $training_name
  * @property string $training_date
+ * @property string $training_end_date
  * @property int $military_service_card_id
  *
  * @property DocMilitaryServiceCard $militaryServiceCard
@@ -30,7 +31,7 @@ class DocPassingCommanderTraining extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['training_date'], 'safe'],
+            [['training_date', 'training_end_date'], 'safe'],
             [['military_service_card_id'], 'required'],
             [['military_service_card_id'], 'default', 'value' => null],
             [['military_service_card_id'], 'integer'],
@@ -45,10 +46,11 @@ class DocPassingCommanderTraining extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'training_name' => 'Training Name',
-            'training_date' => 'Training Date',
-            'military_service_card_id' => 'Military Service Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'training_name' => Yii::t('main', 'Training Name'),
+            'training_end_date' => Yii::t('main', 'Training End Date'),
+            'training_date' => Yii::t('main', 'Training Date'),
+            'military_service_card_id' => Yii::t('main', 'Military Service Card ID'),
         ];
     }
 

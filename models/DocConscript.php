@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Model;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "doc_conscript".
@@ -45,8 +48,15 @@ use Yii;
  * @property int $district_id
  * @property int $street_id
  * @property int $region_id
+ * @property int $udo_id
+ * @property int $odo_id
  * @property string $photo_name
  * @property string $photo_path
+ * @property int $creator
+ * @property string $created_at
+ * @property int $modifier
+ * @property string $modified_at
+ * @property int $deletion_mark
  *
  * @property DocCommissionResults[] $docCommissionResults
  * @property EntCity $city
@@ -56,9 +66,11 @@ use Yii;
  * @property EntNationality $nationality
  * @property EntNativeLanguage $nativeLang
  * @property EntRegion $region
+ * @property EntSocialPosition $socialPosition
+ * @property EnumFamilyStatus $familyStatus
+ * @property EntValidityDegree $fitnessDegree
  * @property DocEducation[] $docEducations
  * @property DocFamilyMembers[] $docFamilyMembers
- * @property DocMedicalOpinion[] $docMedicalOpinions
  * @property DocMilitaryRegistration[] $docMilitaryRegistrations
  * @property DocMilitaryServiceCard[] $docMilitaryServiceCards
  * @property DocPassingMedCommission[] $docPassingMedCommissions
@@ -67,6 +79,8 @@ use Yii;
  */
 class DocConscript extends \yii\db\ActiveRecord
 {
+    public $photo;
+
     /**
      * {@inheritdoc}
      */
@@ -75,20 +89,34 @@ class DocConscript extends \yii\db\ActiveRecord
         return 'doc_conscript';
     }
 
+    public function beforeSave($insert)
+    {
+        if ($this->isNewRecord && $insert) {
+            $this->deletion_mark = 0;
+            $this->created_at = date('m.d.Y h:m:s');
+            $this->creator = Yii::$app->user->getId();
+        } else {
+            $this->created_at = date('m.d.Y h:m:s');
+            $this->modifier = Yii::$app->user->getId();
+        }
+        return parent::beforeSave($insert);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['passport_given_date', 'birth_date'], 'safe'],
-            [['nationality_id', 'native_lang_id', 'foreign_lang_id', 'social_positionid', 'family_statusid', 'health_condition_id', 'city_id', 'district_id', 'street_id', 'region_id'], 'default', 'value' => null],
-            [['nationality_id', 'native_lang_id', 'foreign_lang_id', 'social_positionid', 'family_statusid', 'health_condition_id', 'city_id', 'district_id', 'street_id', 'region_id'], 'integer'],
+            [['created_at', 'modified_at', 'passport_given_date', 'birth_date'], 'safe'],
+            [['creator', 'modifier', 'udo_id', 'odo_id', 'deletion_mark', 'nationality_id', 'native_lang_id', 'foreign_lang_id', 'social_positionid', 'family_statusid', 'health_condition_id', 'city_id', 'district_id', 'street_id', 'region_id'], 'default', 'value' => null],
+            [['creator', 'modifier', 'udo_id', 'odo_id', 'deletion_mark', 'nationality_id', 'native_lang_id', 'foreign_lang_id', 'social_positionid', 'family_statusid', 'health_condition_id', 'city_id', 'district_id', 'street_id', 'region_id'], 'integer'],
             [['first_name', 'last_name', 'patronymic', 'passport_issued_by'], 'string', 'max' => 200],
             [['passport_seria'], 'string', 'max' => 2],
             [['passport_number', 'state_lang'], 'string', 'max' => 100],
             [['birth_place', 'address', 'phone_number', 'work_place', 'civilian_profession', 'committee', 'study_place', 'sport_type', 'criminal_record', 'criminal_record_relatives', 'doc_number', 'family_residence', 'sports_category', 'relatives_connect', 'fitness_degree', 'postponement', 'comment', 'photo_name', 'photo_path'], 'string', 'max' => 1000],
             [['pinfl'], 'string', 'max' => 14],
+            [['photo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpeg, jpg'],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntCity::className(), 'targetAttribute' => ['city_id' => 'id']],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntDistrict::className(), 'targetAttribute' => ['district_id' => 'id']],
             [['foreign_lang_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntForeignLanguage::className(), 'targetAttribute' => ['foreign_lang_id' => 'id']],
@@ -106,45 +134,47 @@ class DocConscript extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'patronymic' => 'Patronymic',
-            'passport_seria' => 'Passport Seria',
-            'passport_number' => 'Passport Number',
-            'passport_given_date' => 'Passport Given Date',
-            'passport_issued_by' => 'Passport Issued By',
-            'birth_date' => 'Birth Date',
-            'birth_place' => 'Birth Place',
-            'nationality_id' => 'Nationality ID',
-            'pinfl' => 'Pinfl',
-            'address' => 'Address',
-            'phone_number' => 'Phone Number',
-            'native_lang_id' => 'Native Lang ID',
-            'state_lang' => 'State Lang',
-            'foreign_lang_id' => 'Foreign Lang ID',
-            'work_place' => 'Work Place',
-            'civilian_profession' => 'Civilian Profession',
-            'committee' => 'Committee',
-            'social_positionid' => 'Social Positionid',
-            'study_place' => 'Study Place',
-            'sport_type' => 'Sport Type',
-            'criminal_record' => 'Criminal Record',
-            'criminal_record_relatives' => 'Criminal Record Relatives',
-            'doc_number' => 'Doc Number',
-            'family_statusid' => 'Family Statusid',
-            'family_residence' => 'Family Residence',
-            'sports_category' => 'Sports Category',
-            'relatives_connect' => 'Relatives Connect',
-            'fitness_degree' => 'Fitness Degree',
-            'health_condition_id' => 'Health Condition ID',
-            'postponement' => 'Postponement',
-            'comment' => 'Comment',
-            'city_id' => 'City ID',
-            'district_id' => 'District ID',
-            'street_id' => 'Street ID',
-            'region_id' => 'Region ID',
-            'photo_name' => 'Photo Name',
-            'photo_path' => 'Photo Path',
+            'first_name' => Yii::t('main', 'First Name'),
+            'last_name' => Yii::t('main', 'Last Name'),
+            'patronymic' => Yii::t('main', 'Patronymic'),
+            'passport_seria' => Yii::t('main', 'Passport Seria'),
+            'passport_number' => Yii::t('main', 'Passport Number'),
+            'passport_given_date' => Yii::t('main', 'Passport Given Date'),
+            'passport_issued_by' => Yii::t('main', 'Passport Issued By'),
+            'birth_date' => Yii::t('main', 'Birth Date'),
+            'birth_place' => Yii::t('main', 'Birth Place'),
+            'nationality_id' => Yii::t('main', 'Nationality ID'),
+            'pinfl' => Yii::t('main', 'Pinfl'),
+            'address' => Yii::t('main', 'Address'),
+            'phone_number' => Yii::t('main', 'Phone Number'),
+            'native_lang_id' => Yii::t('main', 'Native Lang ID'),
+            'state_lang' => Yii::t('main', 'State Lang'),
+            'foreign_lang_id' => Yii::t('main', 'Foreign Lang ID'),
+            'work_place' => Yii::t('main', 'Work Place'),
+            'civilian_profession' => Yii::t('main', 'Civilian Profession'),
+            'committee' => Yii::t('main', 'Committee'),
+            'social_positionid' => Yii::t('main', 'Social Positionid'),
+            'study_place' => Yii::t('main', 'Study Place'),
+            'sport_type' => Yii::t('main', 'Sport Type'),
+            'criminal_record' => Yii::t('main', 'Criminal Record'),
+            'criminal_record_relatives' => Yii::t('main', 'Criminal Record Relatives'),
+            'doc_number' => Yii::t('main', 'Doc Number'),
+            'family_statusid' => Yii::t('main', 'Family Statusid'),
+            'family_residence' => Yii::t('main', 'Family Residence'),
+            'sports_category' => Yii::t('main', 'Sports Category'),
+            'relatives_connect' => Yii::t('main', 'Relatives Connect'),
+            'fitness_degree' => Yii::t('main', 'Fitness Degree'),
+            'health_condition_id' => Yii::t('main', 'Health Condition ID'),
+            'postponement' => Yii::t('main', 'Postponement'),
+            'comment' => Yii::t('main', 'Comment'),
+            'city_id' => Yii::t('main', 'City ID'),
+            'district_id' => Yii::t('main', 'District ID'),
+            'street_id' => Yii::t('main', 'Street ID'),
+            'region_id' => Yii::t('main', 'Region ID'),
+            'photo_name' => Yii::t('main', 'Photo Name'),
+            'photo_path' => Yii::t('main', 'Photo Path'),
+            'udo_id' => Yii::t('main', 'Udo'),
+            'odo_id' => Yii::t('main', 'Odo'),
         ];
     }
 
@@ -191,6 +221,14 @@ class DocConscript extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getFitnessDegree()
+    {
+        return $this->hasOne(EntValidityDegree::className(), ['id' => 'fitness_degree']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getNationality()
     {
         return $this->hasOne(EntNationality::className(), ['id' => 'nationality_id']);
@@ -215,6 +253,14 @@ class DocConscript extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getFamilyStatus()
+    {
+        return $this->hasOne(EnumFamilyStatus::className(), ['id' => 'family_statusid']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getDocEducations()
     {
         return $this->hasMany(DocEducation::className(), ['conscript_id' => 'id']);
@@ -231,9 +277,9 @@ class DocConscript extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDocMedicalOpinions()
+    public function getSocialPosition()
     {
-        return $this->hasMany(DocMedicalOpinion::className(), ['conscript_id' => 'id']);
+        return $this->hasOne(EntSocialPosition::className(), ['id' => 'social_positionid']);
     }
 
     /**
@@ -274,5 +320,24 @@ class DocConscript extends \yii\db\ActiveRecord
     public function getDocTurnoutToBeSentToMilitaryUnits()
     {
         return $this->hasMany(DocTurnoutToBeSentToMilitaryUnit::className(), ['conscript_id' => 'id']);
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->photo = UploadedFile::getInstance($this, 'photo');
+            if (!is_null($this->photo)) {
+                $this->photo_path = 'uploads/conscripts/' . $this->id . DIRECTORY_SEPARATOR;
+                $this->photo_name = $this->photo->baseName . '.' . $this->photo->extension;
+                FileHelper::createDirectory('uploads/conscripts/' . $this->id, $mode = 0775, $recursive = true);
+                $this->photo->saveAs('uploads/conscripts/' . $this->id . DIRECTORY_SEPARATOR . $this->photo->baseName . '.' . $this->photo->extension);
+                $this->save(false);
+                return true;
+            }
+            return false;
+
+        } else {
+            return false;
+        }
     }
 }

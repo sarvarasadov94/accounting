@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\DocConscript;
 use Yii;
 use app\models\DocCommissionResults;
 use app\models\DocCommissionResultsSearch;
@@ -62,16 +63,23 @@ class DocCommissionResultsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($conscriptId = null)
     {
         $model = new DocCommissionResults();
+        $conscript = DocConscript::findOne($conscriptId);
+
+        if ($conscriptId) {
+            $model->conscript_id = $conscriptId;
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 6]);
         }
 
         return $this->render('create', [
+            'conscriptId' => $conscriptId,
             'model' => $model,
+            'conscript' => $conscript,
         ]);
     }
 
@@ -82,16 +90,19 @@ class DocCommissionResultsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $conscriptId = null)
     {
         $model = $this->findModel($id);
+        $conscript = DocConscript::findOne($conscriptId);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 6]);
         }
 
         return $this->render('update', [
+            'conscriptId' => $conscriptId,
             'model' => $model,
+            'conscript' => $conscript,
         ]);
     }
 
@@ -102,11 +113,22 @@ class DocCommissionResultsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $conscriptId = null)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 6]);
+    }
+
+    public function actionPrint($id, $conscriptId)
+    {
+        $model = $this->findModel($id);
+        $conscript = DocConscript::findOne($conscriptId);
+
+        return $this->render('print', [
+            'model' => $model,
+            'conscript' => $conscript,
+        ]);
     }
 
     /**

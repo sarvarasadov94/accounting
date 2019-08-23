@@ -62,12 +62,14 @@ class DocPassingTrainingFeesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($record_card_id = null)
     {
         $model = new DocPassingTrainingFees();
-
+        if ($record_card_id) {
+            $model->record_card_id = $record_card_id;
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-record-card/view', 'id' => $record_card_id, 'tab' => 3]);
         }
 
         return $this->render('create', [
@@ -82,12 +84,12 @@ class DocPassingTrainingFeesController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $record_card_id = null)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['doc-record-card/view', 'id' => $record_card_id, 'tab' => 3]);
         }
 
         return $this->render('update', [
@@ -102,11 +104,11 @@ class DocPassingTrainingFeesController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $record_card_id = null)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['doc-record-card/view', 'id' => $record_card_id, 'tab' => 3]);
     }
 
     /**

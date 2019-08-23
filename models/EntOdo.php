@@ -90,6 +90,6 @@ class EntOdo extends \yii\db\ActiveRecord
      */
     public function getDocMilitaryServiceCards()
     {
-        return $this->hasMany(DocMilitaryServiceCard::className(), ['is_registered_odo' => 'id']);
+        return $this->hasMany(DocMilitaryServiceCard::className(), ['odo_id' => 'id']);
     }
 }

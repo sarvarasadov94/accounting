@@ -7,31 +7,21 @@ use yii\widgets\DetailView;
 /* @var $model app\models\DocOfficersAndSoldiers */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Doc Officers And Soldiers'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'OfficersAndSoldiers'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="doc-officers-and-soldiers-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('main', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('main', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('main', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'first_name',
+            'special_number',
+            [
+                'label' => Yii::t('main', 'Soldier Type ID'),
+                'value' => $model->soldierType ? $model->soldierType->name : "",
+            ],
             'last_name',
+            'first_name',
             'patronymic',
             'military_ticket_seria',
             'military_ticket_number',
@@ -39,50 +29,88 @@ $this->params['breadcrumbs'][] = $this->title;
             'issued_by',
             'birth_date',
             'birth_place',
-            'nationality_id',
+            [
+                'label' => Yii::t('main', 'Nationality ID'),
+                'value' => $model->nationality ? $model->nationality->name : "",
+            ],
             'address',
-            'region_id',
-            'city_id',
-            'district_id',
+            [
+                'label' => Yii::t('main', 'Region ID'),
+                'value' => $model->region ? $model->region->name : "",
+            ],
+            [
+                'label' => Yii::t('main', 'City ID'),
+                'value' => $model->city ? $model->city->name : "",
+            ],
+            [
+                'label' => Yii::t('main', 'District ID'),
+                'value' => $model->district ? $model->district->name : "",
+            ],
             'phone_number',
             'committee',
-            'education_type_id',
+            [
+                'label' => Yii::t('main', 'Education Type ID'),
+                'value' => $model->educationType ? $model->educationType->name : "",
+            ],
             'civilian_profession',
             'work_place',
-            'family_status_id',
+            [
+                'label' => Yii::t('main', 'Family Status ID'),
+                'value' => $model->familyStatus ? $model->familyStatus->name : "",
+            ],
             'sport',
             'criminal_record',
             'military_service_type',
-            'validity_degree_id',
-            'rank_id',
+            [
+                'label' => Yii::t('main', 'Validity Degree ID'),
+                'value' => $model->validityDegree ? $model->validityDegree->name : "",
+            ],
+            [
+                'label' => Yii::t('main', 'Rank ID'),
+                'value' => $model->rank ? $model->rank->name : "",
+            ],
             'accounting_category',
             'accounting_group',
-            'vus',
-            'military_unit_id',
+            [
+                'label' => Yii::t('main', 'Vus'),
+                'value' => $model->vusNumber ? $model->vusNumber->name : "",
+            ],
+            [
+                'label' => Yii::t('main', 'Intended odo id'),
+                'value' => $model->intendedOdo ? $model->intendedOdo->name : "",
+            ],
+            'intended_odo_date',
+            [
+                'label' => Yii::t('main', 'Military Unit ID'),
+                'value' => $model->militaryUnit ? $model->militaryUnit->name : "",
+            ],
             'start_date',
             'end_date',
             'reserver_date',
-            'reserver_comment',
             'oath_date',
+            'reserver_comment',
+            'order_number',
+            'order_date',
             'intended_to_command',
-            'intended_vus',
+            [
+                'label' => Yii::t('main', 'Intended Vus'),
+                'value' => $model->intendedVus ? $model->intendedVus->name : "",
+            ],
             'enrollment_to_reservre',
             'registration_date',
             'date_of_deregistration',
             'height',
             'head_circumference',
+            'gas_mask_size',
             'uniform_size',
             'shoe_size',
             'comment',
-            'gas_mask_size',
-            'special_number',
-            'soldier_type_id',
-            'conscript_id',
-            'creator',
-            'created_at',
-            'modifier',
-            'modified_at',
         ],
     ]) ?>
 
+    <?php if (Yii::$app->user->can('Superadmin') || Yii::$app->user->can('Admin') || Yii::$app->user->can('Operator') || Yii::$app->user->can('Operator_Ofitser_Soldat')) { ?>
+        <div class="col-md-12" style="margin-bottom: 60px !important;">
+            <?= Html::a(Yii::t('main', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-danger pull-right']) ?>
+        </div>
+    <?php } ?>
 </div>

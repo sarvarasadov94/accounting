@@ -34,7 +34,6 @@ class DocMilitaryRegistration extends \yii\db\ActiveRecord
         return [
             [['conscript_id', 'preparation_for_armed_forces_id'], 'default', 'value' => null],
             [['conscript_id', 'preparation_for_armed_forces_id'], 'integer'],
-            [['preparation_for_armed_forces_id'], 'required'],
             [['admitted', 'removed'], 'string', 'max' => 45],
             [['conscript_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocConscript::className(), 'targetAttribute' => ['conscript_id' => 'id']],
             [['preparation_for_armed_forces_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocPreparationForArmedForces::className(), 'targetAttribute' => ['preparation_for_armed_forces_id' => 'id']],
@@ -48,10 +47,10 @@ class DocMilitaryRegistration extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'admitted' => 'Admitted',
-            'removed' => 'Removed',
-            'conscript_id' => 'Conscript ID',
-            'preparation_for_armed_forces_id' => 'Preparation For Armed Forces ID',
+            'admitted' => Yii::t('main', 'Admitted'),
+            'removed' => Yii::t('main','Removed'),
+            'conscript_id' => Yii::t('main','Conscript ID'),
+            'preparation_for_armed_forces_id' => Yii::t('main','Preparation For Armed Forces ID'),
         ];
     }
 

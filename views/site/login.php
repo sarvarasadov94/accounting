@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="pos">
         <div class="main_pos">
             <div class="images__link">
-                <img src="/public/Images/logoo.png" alt="" style="width: 140px; height: 140px">
+                <img src="/public/Images/emblem_2.png" alt="" style="width: 160px; height: 160px">
                 <div class="no_name_title">
                     <span>ЭЛЕКТРОННАЯ СИСТЕМА ВОИНСКОГО УЧЕТА</span>
                 </div>
@@ -48,17 +48,17 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
         </div>
-        <div class="contact_box">
-            <div class="col-md-5"><a href="#" class="instuction">Инструкция
-                    пользователя</a></div>
-            <div class="col-md-2 center_block">
-                <div><img src="/public/Images/phone_icon.png"></div>
-                Служба технической поддержки:
-                <span>+998 71 --- -- --</span>
-            </div>
-            <div class="col-md-5"><a href="#" class="feedback">Обратная связь</a></div>
-            <div class="clearfix"></div>
-        </div>
+<!--        <div class="contact_box">-->
+<!--            <div class="col-md-5"><a href="#" class="instuction">Инструкция-->
+<!--                    пользователя</a></div>-->
+<!--            <div class="col-md-2 center_block">-->
+<!--                <div><img src="/public/Images/phone_icon.png"></div>-->
+<!--                Служба технической поддержки:-->
+<!--                <span>+998 71 --- -- --</span>-->
+<!--            </div>-->
+<!--            <div class="col-md-5"><a href="#" class="feedback">Обратная связь</a></div>-->
+<!--            <div class="clearfix"></div>-->
+<!--        </div>-->
     </div>
 </div>
 

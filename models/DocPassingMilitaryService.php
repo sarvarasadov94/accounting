@@ -50,13 +50,13 @@ class DocPassingMilitaryService extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'military_unit_id' => 'Military Unit ID',
-            'position' => 'Position',
-            'vus_number' => 'Vus Number',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
-            'record_card_id' => 'Record Card ID',
+            'id' => Yii::t('main','ID'),
+            'military_unit_id' => Yii::t('main','Military Unit ID'),
+            'position' => Yii::t('main','Position'),
+            'vus_number' => Yii::t('main','Vus Number'),
+            'start_date' => Yii::t('main','Start Date'),
+            'end_date' => Yii::t('main','End Date'),
+            'record_card_id' => Yii::t('main','Record Card ID'),
         ];
     }
 

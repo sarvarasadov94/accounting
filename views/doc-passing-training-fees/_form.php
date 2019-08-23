@@ -7,27 +7,50 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\DocPassingTrainingFees */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row">
+    <div class="col-ms-12">
+        <section class="panel">
+            <div class="panel-body">
+                <br>
+                <h2 class="page_name"><?= Yii::t('main', 'PassingTrainingFees'); ?></h2>
+                <div class="doc-passing-training-fees-form">
 
-<div class="doc-passing-training-fees-form">
+                    <?php $form = ActiveForm::begin(); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <?= $form->field($model, 'year')->textInput() ?>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <?= $form->field($model, 'days')->textInput() ?>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <?= $form->field($model, 'military_unit_or_orgname')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <?= $form->field($model, 'vus_number')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
 
-    <?= $form->field($model, 'year')->textInput() ?>
+                    <div class="form-group">
+                        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
+                    </div>
 
-    <?= $form->field($model, 'days')->textInput() ?>
+                    <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'military_unit_or_orgname')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'vus_number')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'record_card_id')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

@@ -52,7 +52,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'study_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -71,7 +71,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'startdate')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -85,7 +85,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'enddate')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>

@@ -1,8 +1,11 @@
 <?php
+use app\assets\ChartAsset;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::t('main', 'HeaderText');
+ChartAsset::register($this);
+
 ?>
 <div class="site-index">
     <div class="row">
@@ -24,23 +27,23 @@ $this->title = 'My Yii Application';
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i> Статистика по степени годности
                     <div class="pull-right">
-<!--                        <div class="btn-group">-->
-<!--                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">-->
-<!--                                Actions-->
-<!--                                <span class="caret"></span>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu pull-right" role="menu">-->
-<!--                                <li><a href="#">Action</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="#">Another action</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="#">Something else here</a>-->
-<!--                                </li>-->
-<!--                                <li class="divider"></li>-->
-<!--                                <li><a href="#">Separated link</a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
+                        <!--                        <div class="btn-group">-->
+                        <!--                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">-->
+                        <!--                                Actions-->
+                        <!--                                <span class="caret"></span>-->
+                        <!--                            </button>-->
+                        <!--                            <ul class="dropdown-menu pull-right" role="menu">-->
+                        <!--                                <li><a href="#">Action</a>-->
+                        <!--                                </li>-->
+                        <!--                                <li><a href="#">Another action</a>-->
+                        <!--                                </li>-->
+                        <!--                                <li><a href="#">Something else here</a>-->
+                        <!--                                </li>-->
+                        <!--                                <li class="divider"></li>-->
+                        <!--                                <li><a href="#">Separated link</a>-->
+                        <!--                                </li>-->
+                        <!--                            </ul>-->
+                        <!--                        </div>-->
                     </div>
                 </div>
                 <!-- /.panel-heading -->
@@ -133,49 +136,17 @@ $this->title = 'My Yii Application';
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Аблакулов Бегзод Ихтиерович
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Абдурахмонов Эркин Шеркузи угли
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Абдухакимов Тимур Геннадьевич
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Хусанов Сардор Аскар угли
 
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Шомахсудов Даврон Шавкат угли
-
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Эркинов Нодирбек Рустам угли
-
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-bookmark"></i> Янчиков Дониёр Бахтиёрович
-
-
-                            <span class="pull-right text-muted small"><em>29.12.2018</em>
-                                    </span>
-                        </a>
-
+                        <?php foreach ($list as $item): ?>
+                            <a href="/doc-conscript/update?id=<?= Yii::$app->formatter->asText($item['id']) ?>" class="list-group-item">
+                                <i class="fa fa-tasks fa-bookmark"></i> <?= Yii::$app->formatter->asText($item['last_name']) . " " . Yii::$app->formatter->asText($item['first_name']) . " " . Yii::$app->formatter->asText($item['patronymic']) ?>
+                                <span class="pull-right text-muted small">
+                                    <em><?= Yii::$app->formatter->asText($item['birth_date']) ?></em>
+                                </span>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
-                    <a href="#" class="btn btn-default btn-block">Показать весь список</a>
+                    <?= \yii\helpers\Html::a(Yii::t('main', 'GetWholeList'), ['report/report-conscripts'], ['class' => 'btn btn-default btn-block']) ?>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -184,7 +155,6 @@ $this->title = 'My Yii Application';
                 </div>
                 <div class="panel-body">
                     <div id="morris-donut-chart"></div>
-<!--                    <a href="#" class="btn btn-default btn-block">View Details</a>-->
                 </div>
             </div>
         </div>

@@ -7,29 +7,84 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\DocInfoAboutMedExaminations */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row">
+    <div class="col-ms-12">
+        <section class="panel">
+            <div class="panel-body">
+                <br>
+                <h2 class="page_name"><?= Yii::t('main', 'InfoAboutMedExaminations'); ?></h2>
+                <div class="doc-info-about-med-examinations-form">
 
-<div class="doc-info-about-med-examinations-form">
+                    <?php $form = ActiveForm::begin(); ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?php if (isset($model->pass_date))
+                                $model->pass_date = date("d.m.Y", strtotime($model->pass_date));
+                            ?>
+                            <?= $form->field($model, 'pass_date')->widget(kartik\date\DatePicker::classname(), [
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'dd.mm.yyyy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?= $form->field($model, 'tore_examination')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?php if (isset($model->tore_examination_date))
+                                $model->tore_examination_date = date("d.m.Y", strtotime($model->tore_examination_date));
+                            ?>
+                            <?= $form->field($model, 'tore_examination_date')->widget(kartik\date\DatePicker::classname(), [
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'dd.mm.yyyy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-    <?= $form->field($model, 'pass_date')->textInput() ?>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?= $form->field($model, 'comission_name')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?= $form->field($model, 'comission_comment')->textInput(['maxlength' => true]) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <?php if (isset($model->comission_date))
+                                $model->comission_date = date("d.m.Y", strtotime($model->comission_date));
+                            ?>
+                            <?= $form->field($model, 'comission_date')->widget(kartik\date\DatePicker::classname(), [
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'dd.mm.yyyy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                    </div>
 
-    <?= $form->field($model, 'comission_name')->textInput(['maxlength' => true]) ?>
+                    <div class="form-group">
+                        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
+                    </div>
 
-    <?= $form->field($model, 'comission_comment')->textInput(['maxlength' => true]) ?>
+                    <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'comission_date')->textInput() ?>
-
-    <?= $form->field($model, 'tore_examination')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'tore_examination_date')->textInput() ?>
-
-    <?= $form->field($model, 'record_card_id')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

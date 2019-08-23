@@ -11,13 +11,19 @@ use yii\widgets\ActiveForm;
 <div class="ent-group-vus-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'group_mark')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'definition')->textInput(['maxlength' => true]) ?>
+    <div class="col-md-2">
+        <div class="form-group">
+            <?= $form->field($model, 'group_mark')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="form-group">
+            <?= $form->field($model, 'definition')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('main', 'Save'), ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

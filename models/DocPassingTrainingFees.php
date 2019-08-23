@@ -48,13 +48,13 @@ class DocPassingTrainingFees extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'year' => 'Year',
-            'days' => 'Days',
-            'military_unit_or_orgname' => 'Military Unit Or Orgname',
-            'position' => 'Position',
-            'vus_number' => 'Vus Number',
-            'record_card_id' => 'Record Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'year' => Yii::t('main', 'Year'),
+            'days' => Yii::t('main', 'Days'),
+            'military_unit_or_orgname' => Yii::t('main', 'Military Unit Or Orgname'),
+            'position' => Yii::t('main', 'Position'),
+            'vus_number' => Yii::t('main', 'Vus Number'),
+            'record_card_id' => Yii::t('main', 'Record Card ID'),
         ];
     }
 

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EntSoldierVusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Ent Soldier Vuses');
+$this->title = Yii::t('main', 'EntSoldierVus');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ent-soldier-vus-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Ent Soldier Vus'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('main', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
-            'id',
             'code',
 
             ['class' => 'yii\grid\ActionColumn','contentOptions' => ['style' => 'width:65px;']],

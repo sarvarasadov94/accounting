@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "doc_record_card".
@@ -11,6 +13,8 @@ use Yii;
  * @property string $pinfl
  * @property string $passport_seria
  * @property string $passport_number
+ * @property string $passport_given_date
+ * @property string $passport_issued_by
  * @property string $photo_name
  * @property string $photo_path
  * @property string $first_name
@@ -18,8 +22,6 @@ use Yii;
  * @property string $patronymic
  * @property string $birth_date
  * @property string $birth_place
- * @property string $vus_number
- * @property string $vus_code
  * @property int $nationality_id
  * @property int $education_type_id
  * @property string $civilian_profession
@@ -66,6 +68,16 @@ use Yii;
  * @property string $awards
  * @property string $wounds
  * @property string $special_marks
+ * @property string $vus_group
+ * @property string $vus_number
+ * @property string $vus_code
+ * @property int $creator
+ * @property string $created_at
+ * @property int $modifier
+ * @property string $modified_at
+ * @property int $deletion_mark
+ * @property int $udo_id
+ * @property int $odo_id
  *
  * @property DocAcceptanceAndWithdrawalMarks[] $docAcceptanceAndWithdrawalMarks
  * @property DocInfoAboutMedExaminations[] $docInfoAboutMedExaminations
@@ -78,14 +90,19 @@ use Yii;
  * @property EntRank $rank
  * @property EntRank $statewideRank
  * @property EntRegion $region
- * @property EntRegion $voenkomatRegion
+ * @property EntOdo $odo
  * @property EntValidityDegree $validityDegree
  * @property EntUdo $udo
  * @property EnumEducationType $educationType
  * @property EnumFamilyStatus $familyStatus
+ * @property EntGroupVus $vusGroup
+ * @property EntSoldierVusCode $vusCode
+ * @property EntSoldierVus $vusNumber
  */
 class DocRecordCard extends \yii\db\ActiveRecord
 {
+    public $photo;
+
     /**
      * {@inheritdoc}
      */
@@ -94,19 +111,33 @@ class DocRecordCard extends \yii\db\ActiveRecord
         return 'doc_record_card';
     }
 
+    public function beforeSave($insert)
+    {
+        if ($this->isNewRecord && $insert) {
+            $this->deletion_mark = 0;
+            $this->created_at = date('m.d.Y h:m:s');
+            $this->creator = Yii::$app->user->getId();
+        } else {
+            $this->created_at = date('m.d.Y h:m:s');
+            $this->modifier = Yii::$app->user->getId();
+        }
+        return parent::beforeSave($insert);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['birth_date', 'vocation_date', 'based_date', 'military_oath_taken_date'], 'safe'],
-            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'default', 'value' => null],
-            [['nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'integer'],
-            [['pinfl'], 'string', 'max' => 100],
+            [['created_at', 'modified_at', 'birth_date', 'vocation_date', 'based_date', 'military_oath_taken_date', 'passport_given_date'], 'safe'],
+            [['creator', 'modifier', 'deletion_mark', 'vus_group', 'vus_number', 'vus_code', 'nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'default', 'value' => null],
+            [['creator', 'modifier', 'deletion_mark', 'vus_group', 'vus_number', 'vus_code', 'nationality_id', 'education_type_id', 'region_id', 'city_id', 'district_id', 'family_status_id', 'odo_id', 'udo_id', 'military_unit_id', 'validity_degree_id', 'rank_id', 'statewide_rank_id'], 'integer'],
+            [['pinfl'], 'string', 'max' => 14],
             [['passport_seria'], 'string', 'max' => 2],
             [['passport_number'], 'string', 'max' => 10],
-            [['photo_name', 'photo_path', 'birth_place', 'vus_number', 'vus_code', 'civilian_profession', 'work_place', 'phone_number', 'address', 'family_residence', 'certificate_seria', 'certificate_number', 'category', 'accounting_group', 'composition', 'rank_name_and_vus', 'team_number', 'by_vus', 'position', 'route_number', 'days_and_hours', 'point', 'prescription_issued', 'access_number', 'based_comment', 'secondment_conclusion', 'head_of_dep_conclusion', 'height', 'head_circumference', 'uniform_size', 'shoe_size', 'participation_in_battles', 'military_oath_taken_comment', 'awards', 'wounds', 'special_marks'], 'string', 'max' => 1000],
+            [['photo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpeg, jpg'],
+            [['passport_issued_by', 'photo_name', 'photo_path', 'birth_place', 'civilian_profession', 'work_place', 'phone_number', 'address', 'family_residence', 'certificate_seria', 'certificate_number', 'category', 'accounting_group', 'composition', 'rank_name_and_vus', 'team_number', 'by_vus', 'position', 'route_number', 'days_and_hours', 'point', 'prescription_issued', 'access_number', 'based_comment', 'secondment_conclusion', 'head_of_dep_conclusion', 'height', 'head_circumference', 'uniform_size', 'shoe_size', 'participation_in_battles', 'military_oath_taken_comment', 'awards', 'wounds', 'special_marks'], 'string', 'max' => 1000],
             [['first_name', 'last_name', 'patronymic'], 'string', 'max' => 200],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntCity::className(), 'targetAttribute' => ['city_id' => 'id']],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => EntDistrict::className(), 'targetAttribute' => ['district_id' => 'id']],
@@ -129,65 +160,68 @@ class DocRecordCard extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'pinfl' => 'Pinfl',
-            'passport_seria' => 'Passport Seria',
-            'passport_number' => 'Passport Number',
-            'photo_name' => 'Photo Name',
-            'photo_path' => 'Photo Path',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'patronymic' => 'Patronymic',
-            'birth_date' => 'Birth Date',
-            'birth_place' => 'Birth Place',
-            'vus_number' => 'Vus Number',
-            'vus_code' => 'Vus Code',
-            'nationality_id' => 'Nationality ID',
-            'education_type_id' => 'Education Type ID',
-            'civilian_profession' => 'Civilian Profession',
-            'work_place' => 'Work Place',
-            'phone_number' => 'Phone Number',
-            'address' => 'Address',
-            'region_id' => 'Region ID',
-            'city_id' => 'City ID',
-            'district_id' => 'District ID',
-            'family_status_id' => 'Family Status ID',
-            'family_residence' => 'Family Residence',
-            'odo_id' => 'Odo ID',
-            'udo_id' => 'UdoID',
-            'military_unit_id' => 'Military Unit ID',
-            'vocation_date' => 'Vocation Date',
-            'certificate_seria' => 'Certificate Seria',
-            'certificate_number' => 'Certificate Number',
-            'validity_degree_id' => 'Validity Degree ID',
-            'rank_id' => 'Rank ID',
-            'category' => 'Category',
-            'accounting_group' => 'Accounting Group',
-            'composition' => 'Composition',
-            'rank_name_and_vus' => 'Rank Name And Vus',
-            'team_number' => 'Team Number',
-            'by_vus' => 'By Vus',
-            'position' => 'Position',
-            'statewide_rank_id' => 'Statewide Rank ID',
-            'route_number' => 'Route Number',
-            'days_and_hours' => 'Days And Hours',
-            'point' => 'Point',
-            'prescription_issued' => 'Prescription Issued',
-            'access_number' => 'Access Number',
-            'based_date' => 'Based Date',
-            'based_comment' => 'Based Comment',
-            'secondment_conclusion' => 'Secondment Conclusion',
-            'head_of_dep_conclusion' => 'Head Of Dep Conclusion',
-            'height' => 'Height',
-            'head_circumference' => 'Head Circumference',
-            'uniform_size' => 'Uniform Size',
-            'shoe_size' => 'Shoe Size',
-            'participation_in_battles' => 'Participation In Battles',
-            'military_oath_taken_date' => 'Military Oath Taken Date',
-            'military_oath_taken_comment' => 'Military Oath Taken Comment',
-            'awards' => 'Awards',
-            'wounds' => 'Wounds',
-            'special_marks' => 'Special Marks',
+            'id' => Yii::t('main', 'ID'),
+            'pinfl' => Yii::t('main', 'Pinfl'),
+            'passport_seria' => Yii::t('main', 'Passport Seria'),
+            'passport_number' => Yii::t('main', 'Passport Number'),
+            'passport_given_date' => Yii::t('main', 'Passport Given Date'),
+            'passport_issued_by' => Yii::t('main', 'Passport Issued By'),
+            'photo_name' => Yii::t('main', 'Photo Name'),
+            'photo_path' => Yii::t('main', 'Photo Path'),
+            'first_name' => Yii::t('main', 'First Name'),
+            'last_name' => Yii::t('main', 'Last Name'),
+            'patronymic' => Yii::t('main', 'Patronymic'),
+            'birth_date' => Yii::t('main', 'Birth Date'),
+            'birth_place' => Yii::t('main', 'Birth Place'),
+            'vus_group' => Yii::t('main', 'Vus Group'),
+            'vus_number' => Yii::t('main', 'Vus Number'),
+            'vus_code' => Yii::t('main', 'Vus Code'),
+            'nationality_id' => Yii::t('main', 'Nationality ID'),
+            'education_type_id' => Yii::t('main', 'Education Type ID'),
+            'civilian_profession' => Yii::t('main', 'Civilian Profession'),
+            'work_place' => Yii::t('main', 'Work Place'),
+            'phone_number' => Yii::t('main', 'Phone Number'),
+            'address' => Yii::t('main', 'Address'),
+            'region_id' => Yii::t('main', 'Region ID'),
+            'city_id' => Yii::t('main', 'City ID'),
+            'district_id' => Yii::t('main', 'District ID'),
+            'family_status_id' => Yii::t('main', 'Family Status ID'),
+            'family_residence' => Yii::t('main', 'Family Residence'),
+            'udo_id' => Yii::t('main', 'Udo'),
+            'odo_id' => Yii::t('main', 'Odo'),
+            'military_unit_id' => Yii::t('main', 'Military Unit ID'),
+            'vocation_date' => Yii::t('main', 'Vocation Date'),
+            'certificate_seria' => Yii::t('main', 'Certificate Seria'),
+            'certificate_number' => Yii::t('main', 'Certificate Number'),
+            'validity_degree_id' => Yii::t('main', 'Validity Degree ID'),
+            'rank_id' => Yii::t('main', 'Rank ID'),
+            'category' => Yii::t('main', 'Category'),
+            'accounting_group' => Yii::t('main', 'Accounting Group'),
+            'composition' => Yii::t('main', 'Composition'),
+            'rank_name_and_vus' => Yii::t('main', 'Rank Name And Vus'),
+            'team_number' => Yii::t('main', 'Team Number'),
+            'by_vus' => Yii::t('main', 'By Vus'),
+            'position' => Yii::t('main', 'Position'),
+            'statewide_rank_id' => Yii::t('main', 'Statewide Rank ID'),
+            'route_number' => Yii::t('main', 'Route Number'),
+            'days_and_hours' => Yii::t('main', 'Days And Hours'),
+            'point' => Yii::t('main', 'Point'),
+            'prescription_issued' => Yii::t('main', 'Prescription Issued'),
+            'access_number' => Yii::t('main', 'Access Number'),
+            'based_date' => Yii::t('main', 'Based Date'),
+            'based_comment' => Yii::t('main', 'Based Comment'),
+            'secondment_conclusion' => Yii::t('main', 'Secondment Conclusion'),
+            'head_of_dep_conclusion' => Yii::t('main', 'Head Of Dep Conclusion'),
+            'height' => Yii::t('main', 'Height'),
+            'head_circumference' => Yii::t('main', 'Head Circumference'),
+            'uniform_size' => Yii::t('main', 'Uniform Size'),
+            'shoe_size' => Yii::t('main', 'Shoe Size'),
+            'participation_in_battles' => Yii::t('main', 'Participation In Battles'),
+            'military_oath_taken_date' => Yii::t('main', 'Military Oath Taken Date'),
+            'military_oath_taken_comment' => Yii::t('main', 'Military Oath Taken Comment'),
+            'awards' => Yii::t('main', 'Awards'),
+            'wounds' => Yii::t('main', 'Wounds'),
+            'special_marks' => Yii::t('main', 'Special Marks'),
         ];
     }
 
@@ -317,5 +351,39 @@ class DocRecordCard extends \yii\db\ActiveRecord
     public function getFamilyStatus()
     {
         return $this->hasOne(EnumFamilyStatus::className(), ['id' => 'family_status_id']);
+    }
+
+    public function getVusNumber()
+    {
+        return $this->hasOne(EntSoldierVus::className(), ['id' => 'vus_number']);
+    }
+
+    public function getVusCode()
+    {
+        return $this->hasOne(EntSoldierVusCode::className(), ['id' => 'vus_code']);
+    }
+
+    public function getVusGroup()
+    {
+        return $this->hasOne(EntGroupVus::className(), ['id' => 'vus_group']);
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->photo = UploadedFile::getInstance($this, 'photo');
+            if (!is_null($this->photo)) {
+                $this->photo_path = 'uploads/record_card/' . $this->id . DIRECTORY_SEPARATOR;
+                $this->photo_name = $this->photo->baseName . '.' . $this->photo->extension;
+                FileHelper::createDirectory('uploads/record_card/' . $this->id, $mode = 0775, $recursive = true);
+                $this->photo->saveAs('uploads/record_card/' . $this->id . DIRECTORY_SEPARATOR . $this->photo->baseName . '.' . $this->photo->extension);
+                $this->save(false);
+                return true;
+            }
+            return false;
+
+        } else {
+            return false;
+        }
     }
 }

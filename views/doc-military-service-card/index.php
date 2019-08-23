@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\DocMilitaryServiceCardSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('main', 'Doc Military Service Cards');
+$this->title = Yii::t('main', 'MilitaryServiceCard');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="doc-military-service-card-index">
@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn','contentOptions' => ['style' => 'width:65px;']],
 
             //'id',
-            'first_name',
-            'last_name',
-            'patronymic',
             'personal_number',
+            'last_name',
+            'first_name',
+            'patronymic',
             //'birth_date',
             //'birth_place',
             //'nationality_id',
@@ -43,15 +43,39 @@ $this->params['breadcrumbs'][] = $this->title;
             //'drafted_to_armed_forces',
             //'continuation_of_service',
             //'med_comission_result',
-            //'rank_id',
+            [
+                'attribute' => 'rank_id',
+                'value' => function ($model) {
+                    return $model->rank ? $model->rank->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntRank::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
             //'reserve_id',
             //'category',
             //'intended',
             //'work_place',
             //'address',
-            //'region_id',
-            //'city_id',
-            //'district_id',
+            [
+                'attribute' => 'region_id',
+                'value' => function ($model) {
+                    return $model->region ? $model->region->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntRegion::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'city_id',
+                'value' => function ($model) {
+                    return $model->city ? $model->city->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntCity::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
+            [
+                'attribute' => 'district_id',
+                'value' => function ($model) {
+                    return $model->district ? $model->district->name : "";
+                },
+                'filter' => ArrayHelper::map(\app\models\EntDistrict::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            ],
             //'is_registered_odo',
             //'ld_number',
             //'is_registered_date',

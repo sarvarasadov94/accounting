@@ -57,17 +57,17 @@ class DocFamilyMembers extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'relative_type_id' => 'Relative Type ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'patronymic' => 'Patronymic',
-            'year_of_birth' => 'Year Of Birth',
-            'address' => 'Address',
-            'work_place' => 'Work Place',
-            'conscript_id' => 'Conscript ID',
-            'military_service_card_id' => 'Military Service Card ID',
-            'relative_group_id' => 'Relative Group ID',
+            'id' => Yii::t('main','ID'),
+            'relative_type_id' => Yii::t('main','Relative Type ID'),
+            'first_name' => Yii::t('main','First Name'),
+            'last_name' => Yii::t('main','Last Name'),
+            'patronymic' => Yii::t('main','Patronymic'),
+            'year_of_birth' => Yii::t('main','Year Of Birth'),
+            'address' => Yii::t('main','Address'),
+            'work_place' => Yii::t('main','Work Place'),
+            'conscript_id' => Yii::t('main','Conscript ID'),
+            'military_service_card_id' => Yii::t('main','Military Service Card ID'),
+            'relative_group_id' => Yii::t('main','Relative Group ID'),
         ];
     }
 

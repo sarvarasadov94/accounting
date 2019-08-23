@@ -51,13 +51,13 @@ class DocInfoAboutMedExaminations extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'pass_date' => 'Pass Date',
-            'comission_name' => 'Comission Name',
-            'comission_comment' => 'Comission Comment',
-            'comission_date' => 'Comission Date',
-            'tore_examination' => 'Tore Examination',
-            'tore_examination_date' => 'Tore Examination Date',
-            'record_card_id' => 'Record Card ID',
+            'pass_date' => Yii::t('main', 'Pass Date'),
+            'comission_name' => Yii::t('main', 'Comission Name'),
+            'comission_comment' => Yii::t('main', 'Comission Comment'),
+            'comission_date' => Yii::t('main', 'Comission Date'),
+            'tore_examination' => Yii::t('main', 'Tore Examination'),
+            'tore_examination_date' => Yii::t('main', 'Tore Examination Date'),
+            'record_card_id' => Yii::t('main', 'Record Card ID'),
         ];
     }
 

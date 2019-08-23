@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\DocRecordCard;
@@ -44,9 +45,23 @@ class DocRecordCardSearch extends DocRecordCard
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        if (Yii::$app->user->can('Superadmin') || Yii::$app->user->can('Admin')) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0']),
+            ]);
+        } else if (isset(User::findOne(Yii::$app->user->getId())->udo_id) && isset(User::findOne(Yii::$app->user->getId())->odo_id)) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0'])->andWhere(['udo_id' => User::findOne(Yii::$app->user->getId())->udo_id])->andWhere(['odo_id' => User::findOne(Yii::$app->user->getId())->odo_id]),
+            ]);
+        } else if (isset(User::findOne(Yii::$app->user->getId())->udo_id) && !isset(User::findOne(Yii::$app->user->getId())->odo_id)) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => null])->orWhere(['deletion_mark' => '0'])->andWhere(['udo_id' => User::findOne(Yii::$app->user->getId())->udo_id]),
+            ]);
+        } else {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query->where(['deletion_mark' => '0'])->andWhere(['deletion_mark' => null]),
+            ]);
+        }
 
         $this->load($params);
 

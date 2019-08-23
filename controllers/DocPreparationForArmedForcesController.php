@@ -108,11 +108,11 @@ class DocPreparationForArmedForcesController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $conscriptId = null)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['doc-conscript/view', 'id' => $conscriptId, 'tab' => 5]);
     }
 
     /**

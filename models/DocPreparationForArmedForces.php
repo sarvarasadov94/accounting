@@ -57,18 +57,18 @@ class DocPreparationForArmedForces extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'receipt_of_basic_military' => 'Receipt Of Basic Military',
-            'professional_fitness_conclusion' => 'Professional Fitness Conclusion',
-            'educational_establishment' => 'Educational Establishment',
-            'specialty_received' => 'Specialty Received',
-            'study_date' => 'Study Date',
-            'startdate' => 'Startdate',
-            'study_period' => 'Study Period',
-            'enddate' => 'Enddate',
-            'conscript_id' => 'Conscript ID',
-            'bloodgroup_id' => 'Bloodgroup ID',
-            'rhfactor_id' => 'Rhfactor ID',
+            'id' => Yii::t('main', 'ID'),
+            'receipt_of_basic_military' => Yii::t('main', 'Receipt Of Basic Military'),
+            'professional_fitness_conclusion' => Yii::t('main', 'Professional Fitness Conclusion'),
+            'educational_establishment' => Yii::t('main', 'Educational Establishment'),
+            'specialty_received' => Yii::t('main', 'Specialty Received'),
+            'study_date' => Yii::t('main', 'Study Date'),
+            'startdate' => Yii::t('main', 'Startdate'),
+            'study_period' => Yii::t('main', 'Study Period'),
+            'enddate' => Yii::t('main', 'Enddate'),
+            'conscript_id' => Yii::t('main', 'Conscript ID'),
+            'bloodgroup_id' => Yii::t('main', 'Bloodgroup ID'),
+            'rhfactor_id' => Yii::t('main', 'Rhfactor ID'),
         ];
     }
 

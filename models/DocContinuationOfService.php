@@ -51,14 +51,14 @@ class DocContinuationOfService extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'position' => 'Position',
-            'military_unit_id' => 'Military Unit ID',
-            'military_union' => 'Military Union',
-            'whose_order' => 'Whose Order',
-            'order_number' => 'Order Number',
-            'order_date' => 'Order Date',
-            'military_service_card_id' => 'Military Service Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'position' => Yii::t('main', 'Position'),
+            'military_unit_id' => Yii::t('main', 'Military Unit ID'),
+            'military_union' => Yii::t('main', 'Military Union'),
+            'whose_order' => Yii::t('main', 'Whose Order'),
+            'order_number' => Yii::t('main', 'Order Number'),
+            'order_date' => Yii::t('main', 'Order Date'),
+            'military_service_card_id' => Yii::t('main', 'Military Service Card ID'),
         ];
     }
 

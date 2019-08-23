@@ -25,7 +25,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'departure_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -66,7 +66,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'passed_passport_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -93,7 +93,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'passed_certificate_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -120,7 +120,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'returned_passport_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>
@@ -147,7 +147,7 @@ use yii\helpers\ArrayHelper;
                             <?= $form->field($model, 'returned_certificate_of_conscript_sector_date')->widget(kartik\date\DatePicker::classname(), [
                                 'pluginOptions' => [
                                     'autoclose' => true,
-                                    'format' => 'mm.dd.yyyy',
+                                    'format' => 'dd.mm.yyyy',
                                 ]
                             ]);
                             ?>

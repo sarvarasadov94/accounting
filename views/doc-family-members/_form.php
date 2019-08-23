@@ -33,12 +33,12 @@ use yii\helpers\ArrayHelper;
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
                         </div>
                     </div>
                     <div class="col-md-4">

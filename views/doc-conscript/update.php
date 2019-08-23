@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\DocConscript */
 
-$this->title = Yii::t('main', 'Update Doc Conscript: {name}', [
-    'name' => $model->id,
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Doc Conscripts'), 'url' => ['index']];
+$this->title = Yii::t('main', 'Update');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Conscript'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('main', 'Update');
 ?>

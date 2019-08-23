@@ -43,11 +43,4 @@ class EntDoctorType extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDocMedicalOpinions()
-    {
-        return $this->hasMany(DocMedicalOpinion::className(), ['doctor_type_id' => 'id']);
-    }
 }

@@ -51,13 +51,13 @@ class DocMilitaryRanks extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'rank_id' => 'Rank ID',
-            'whose_order' => 'Whose Order',
-            'order_number' => 'Order Number',
-            'order_date' => 'Order Date',
-            'comment' => 'Comment',
-            'military_service_card_id' => 'Military Service Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'rank_id' => Yii::t('main', 'Rank ID'),
+            'whose_order' => Yii::t('main', 'Whose Order'),
+            'order_number' => Yii::t('main', 'Order Number'),
+            'order_date' => Yii::t('main', 'Order Date'),
+            'comment' => Yii::t('main', 'Comment'),
+            'military_service_card_id' => Yii::t('main', 'Military Service Card ID'),
         ];
     }
 

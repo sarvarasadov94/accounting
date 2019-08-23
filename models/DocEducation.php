@@ -57,16 +57,16 @@ class DocEducation extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'education_type_id' => 'Education Type ID',
-            'educational_institution_id' => 'Educational Institution ID',
-            'study_place' => 'Study Place',
-            'study_period' => 'Study Period',
-            'enddate' => 'Enddate',
-            'course_number' => 'Course Number',
-            'specialty' => 'Specialty',
-            'conscript_id' => 'Conscript ID',
-            'military_service_card_id' => 'Military Service Card ID',
+            'id' => Yii::t('main', 'ID'),
+            'education_type_id' => Yii::t('main', 'Education Type ID'),
+            'educational_institution_id' => Yii::t('main', 'Educational Institution ID'),
+            'study_place' => Yii::t('main', 'Study Place'),
+            'study_period' => Yii::t('main', 'Study Period'),
+            'enddate' => Yii::t('main', 'Enddate'),
+            'course_number' => Yii::t('main', 'Course Number'),
+            'specialty' => Yii::t('main', 'Specialty'),
+            'conscript_id' => Yii::t('main', 'Conscript ID'),
+            'military_service_card_id' => Yii::t('main', 'Military Service Card ID'),
         ];
     }
 

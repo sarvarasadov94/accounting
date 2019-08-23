@@ -5,13 +5,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\DocContinuationOfService */
 
-$this->title = Yii::t('main', 'Create Doc Continuation Of Service');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Doc Continuation Of Services'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-?>
+//$this->title = Yii::t('main', 'Create Doc Continuation Of Service');
+//$this->params['breadcrumbs'][] = ['label' => Yii::t('main', 'Doc Continuation Of Services'), 'url' => ['index']];
+//$this->params['breadcrumbs'][] = $this->title;
+//?>
 <div class="doc-continuation-of-service-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
